@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@tinkoff/ng-event-plugins.svg)](https://npmjs.com/package/@tinkoff/ng-event-plugins)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@tinkoff/ng-event-plugins)](https://bundlephobia.com/result?p=@tinkoff/ng-event-plugins)
-[![Coverage Status](https://coveralls.io/repos/github/TinkoffCreditSystems/ng-event-plugins/badge.svg?branch=master)](https://coveralls.io/github/TinkoffCreditSystems/ng-event-plugins?branch=master)
+[![Coverage Status](https://codecov.io/gh/taiga-family/ng-event-plugins/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/ng-event-plugins/tree/main/projects)
 [![telegram chat](https://img.shields.io/badge/support-Contact%20us-blue)](https://t.me/taiga_ui)
 
 **@tinkoff/ng-event-plugins** is a tiny (1KB gzip) library for optimizing change detection cycles for performance
