@@ -17,9 +17,9 @@
         "change",
         "detection"
     ],
-    "homepage": "https://github.com/TinkoffCreditSystems/ng-event-plugins#README",
-    "bugs": "https://github.com/TinkoffCreditSystems/ng-event-plugins/issues",
-    "repository": "https://github.com/TinkoffCreditSystems/ng-event-plugins",
+    "homepage": "https://github.com/taiga-family/ng-event-plugins#README",
+    "bugs": "https://github.com/taiga-family/ng-event-plugins/issues",
+    "repository": "https://github.com/taiga-family/ng-event-plugins",
     "license": "Apache-2.0",
     "scripts": {
         "postinstall": "husky install",
