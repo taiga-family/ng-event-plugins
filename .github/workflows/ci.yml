@@ -1,13 +1,15 @@
 name: Web APIs CI
-
-on: [push, pull_request]
+on:
+    pull_request:
+    push:
+        branches: [main]
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: taiga-family/ci/actions/setup-node@1.7.6
+      - uses: taiga-family/ci/actions/setup/node@1.20.0
         with:
           node-version: 12.x
       - run: |
