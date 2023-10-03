@@ -13,7 +13,7 @@
         "@angular/core": "11.0.4",
         "@angular/forms": "11.0.4",
         "@angular/platform-browser": "11.0.4",
-        "@angular/platform-browser-dynamic": "11.0.4",
+        "@angular/platform-browser-dynamic": "11.2.14",
         "@angular/router": "11.0.4",
         "@tinkoff/ng-event-plugins": "latest",
         "core-js": "^2.6.9",
