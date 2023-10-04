@@ -21,10 +21,7 @@
                         "tsConfig": "tsconfig.demo.json",
                         "aot": false,
                         "assets": ["src/favicon.ico"],
-                        "styles": [
-                            "node_modules/highlight.js/styles/idea.css",
-                            "src/styles.css"
-                        ],
+                        "styles": ["node_modules/highlight.js/styles/idea.css", "src/styles.css"],
                         "scripts": []
                     },
                     "configurations": {

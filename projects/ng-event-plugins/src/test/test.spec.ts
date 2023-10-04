@@ -20,7 +20,10 @@ import {asCallable} from '../utils/as-callable';
 describe('EventManagers', () => {
     @Component({
         template: `
-            <div class="wrapper" (click)="onWrapper($event)">
+            <div
+                class="wrapper"
+                (click)="onWrapper($event)"
+            >
                 <div
                     id="stopped-clicks"
                     class="element"
@@ -37,11 +40,25 @@ describe('EventManagers', () => {
                     (click.silent)="onFilteredClicks($event.bubbles)"
                 ></div>
             </div>
-            <div class="wrapper" (click.capture.stop)="(0)">
-                <div id="captured-clicks" class="element" (click)="onCaptured()"></div>
+            <div
+                class="wrapper"
+                (click.capture.stop)="(0)"
+            >
+                <div
+                    id="captured-clicks"
+                    class="element"
+                    (click)="onCaptured()"
+                ></div>
             </div>
-            <div class="wrapper" (click.self)="onBubbled()">
-                <div id="bubbled-clicks" class="element" (click)="(0)"></div>
+            <div
+                class="wrapper"
+                (click.self)="onBubbled()"
+            >
+                <div
+                    id="bubbled-clicks"
+                    class="element"
+                    (click)="(0)"
+                ></div>
             </div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

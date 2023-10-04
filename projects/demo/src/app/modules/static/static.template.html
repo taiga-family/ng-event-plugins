@@ -33,7 +33,10 @@
     Keep in mind example is heavily simplified. To use AOT all filtering functions must be exported named functions and
     arguments number must match.
 </blockquote>
-<popup *ngIf="popup" (closed)="onClosed()">
+<popup
+    *ngIf="popup"
+    (closed)="onClosed()"
+>
     <h1>Popup</h1>
     <custom-select [items]="items"></custom-select>
     <blockquote>
