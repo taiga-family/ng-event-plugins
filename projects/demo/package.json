@@ -16,7 +16,7 @@
         "@angular/platform-browser-dynamic": "11.0.4",
         "@angular/router": "11.0.4",
         "@tinkoff/ng-event-plugins": "latest",
-        "core-js": "^2.6.9",
+        "core-js": "2.6.12",
         "highlight.js": "^10.4.1",
         "ngx-highlightjs": "^4.1.3",
         "rxjs": "~6.6.3",
