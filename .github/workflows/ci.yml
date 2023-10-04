@@ -1,22 +1,20 @@
 name: Web APIs CI
 on:
-    pull_request:
-    push:
-        branches: [main]
+  pull_request:
+  push:
+    branches: [main]
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/node@1.20.0
-        with:
-          node-version: 12.x
-      - run: |
-          npm run build
-          npm run test
-          npm run lint
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+      - run: npm run build
+      - run: npm run lint
+      - run: npm run prettier -- --check
+      - run: npm run test
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          NODE_OPTIONS: --openssl-legacy-provider
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3.1.4
