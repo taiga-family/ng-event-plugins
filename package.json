@@ -99,7 +99,7 @@
         "karma-jasmine-html-reporter": "1.7.0",
         "lint-staged": "12.2.1",
         "ng-packagr": "12.2.6",
-        "prettier": "2.5.1",
+        "prettier": "2.8.8",
         "raw-loader": "^4.0.2",
         "standard-version": "9.3.2",
         "ts-node": "9.0.0",
