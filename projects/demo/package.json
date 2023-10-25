@@ -17,7 +17,7 @@
         "@angular/router": "11.2.14",
         "@tinkoff/ng-event-plugins": "latest",
         "core-js": "2.6.12",
-        "highlight.js": "10.7.3",
+        "highlight.js": "11.9.0",
         "ngx-highlightjs": "4.1.4",
         "rxjs": "6.6.7",
         "zone.js": "0.10.3"
