@@ -1,7 +1,7 @@
 <input
     #input
-    readonly
     placeholder="Select value"
+    readonly
     class="input"
     [value]="value"
     (click)="onClick()"
@@ -17,10 +17,10 @@
         #option
         tabindex="-1"
         class="option"
-        (mousemove.silent)="onMouseMove(option)"
+        (click)="onSelect(item)"
         (keydown.arrowDown.silent.prevent)="onArrowDown(index, items.length)"
         (keydown.arrowUp.silent.prevent)="onArrowUp(index)"
-        (click)="onSelect(item)"
+        (mousemove.silent)="onMouseMove(option)"
     >
         {{ item }}
     </div>
