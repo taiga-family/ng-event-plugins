@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/v2-preview/web-types.json",
+    "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
     "name": "ng-event-plugins",
     "framework": "angular",
     "version": "3.1.0",
