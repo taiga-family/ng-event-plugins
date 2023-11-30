@@ -14,11 +14,12 @@
         "noImplicitReturns": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
-        "target": "es2015",
+        "target": "ES2022",
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2018", "dom"],
         "paths": {
             "@tinkoff/ng-event-plugins": ["projects/ng-event-plugins/src/public-api"]
-        }
+        },
+        "useDefineForClassFields": false
     }
 }

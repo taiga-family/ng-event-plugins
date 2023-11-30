@@ -11,30 +11,13 @@ _stopPropagation()_.
 
 ## How to use
 
-1. Add `EventPluginsModule` to your app module:
+1. Add `NG_EVENT_PLUGINS` to your app providers:
 
    ```typescript
-   import {NgModule} from '@angular/core';
-   import {BrowserModule} from '@angular/platform-browser';
-   import {EventPluginsModule} from '@tinkoff/ng-event-plugins'; // <-- THIS
-
-   @NgModule({
-     bootstrap: [
-       /*...*/
-     ],
-     imports: [
-       /*...*/
-       BrowserModule,
-       EventPluginsModule, // <-- GOES HERE
-     ],
-     declarations: [
-       /*...*/
-     ],
-   })
-   export class AppModule {}
+   bootstrapApplication(AppComponent, {
+     providers: [NG_EVENT_PLUGINS],
+   });
    ```
-
-> `BrowserModule` or `BrowserAnimationsModule` must go first. You will see a warning if you mess the order.
 
 2. Use new modifiers for events in templates and in `@HostListener`:
 
@@ -103,8 +86,6 @@ onScroll(_element: HTMLElement): void {
 
 - Decorated method will be called and change detection triggered if predicate returns `true`.
 
-- Predicates must be exported named function for AOT, arrow functions will trigger build error.
-
 - `.silent` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or `keydown.arrowDown`
   since Angular re-enters `NgZone` inside internal handlers.
 
@@ -127,9 +108,18 @@ This supports all the native Angular syntax, such as `class.class-name` or `styl
 **IMPORTANT NOTES:**
 
 - Until [this issue](https://github.com/angular/angular/issues/12045) is resolved you would have to use
-  `NO_ERRORS_SCHEMA` in your module in order to bind to arbitrary properties
+  `NO_ERRORS_SCHEMA` in your module in order to bind to arbitrary properties or use `host` in `@Component` decorator:
+  ```ts
+  @Component({
+    // ...
+    host: {
+      '[$.disabled]': 'disabled$',
+      '($.disabled)': 'disabled$',
+    },
+  })
+  ```
 - `asCallable` is a utility function from this library that simply adds `Function` to the type so Angular thinks it
-  could be a host listener
+  could be a host listener, unnecessary if you use `host` since it is not type checked.
 - To bind attributes you need to add `.attr` modifier in the end, not the beginning like in basic Angular binding. This
   is due to Angular using regexp to match for `attr.` string in `@HostBinding` decorator:
 
