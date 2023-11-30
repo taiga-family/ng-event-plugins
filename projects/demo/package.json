@@ -8,30 +8,29 @@
         "build": "ng build"
     },
     "dependencies": {
-        "@angular/common": "11.2.14",
-        "@angular/compiler": "11.0.4",
-        "@angular/core": "11.2.14",
-        "@angular/forms": "11.0.4",
-        "@angular/platform-browser": "11.2.14",
-        "@angular/platform-browser-dynamic": "11.0.4",
-        "@angular/router": "11.2.14",
+        "@angular/common": "15.2.10",
+        "@angular/compiler": "15.2.10",
+        "@angular/core": "15.2.10",
+        "@angular/forms": "15.2.10",
+        "@angular/platform-browser": "15.2.10",
+        "@angular/platform-browser-dynamic": "15.2.10",
+        "@angular/router": "15.2.10",
         "@tinkoff/ng-event-plugins": "latest",
         "core-js": "3.33.3",
-        "highlight.js": "11.9.0",
-        "ngx-highlightjs": "10.0.0",
-        "rxjs": "6.6.7",
-        "zone.js": "0.10.3"
+        "ngx-highlightjs": "7.0.1",
+        "rxjs": "7.5.7",
+        "zone.js": "0.11.8"
     },
     "devDependencies": {
-        "@angular-devkit/architect": "0.1700.5",
-        "@angular-devkit/build-angular": "0.1100.4",
-        "@angular/cli": "11.2.19",
-        "@angular/compiler-cli": "11.0.4",
-        "@angular/language-service": "11.2.14",
+        "@angular-devkit/build-angular": "15.2.10",
+        "@angular-devkit/core": "15.2.10",
+        "@angular/cli": "15.2.10",
+        "@angular/compiler-cli": "15.2.10",
+        "@angular/language-service": "15.2.10",
         "@types/node": "20.10.1",
         "ts-node": "10.9.1",
         "tslint": "6.1.3",
-        "typescript": "4.0.2"
+        "typescript": "4.9.5"
     },
     "web-types": "../ng-event-plugins/web-types.json"
 }

@@ -1,6 +1,6 @@
 import {EventManager} from '@angular/platform-browser';
 
-// TODO: A subject to change: https://github.com/angular/angular/issues/3929
+// TODO: Type is exposed since Angular 16, remove when updated
 type EventManagerArg = ConstructorParameters<typeof EventManager>[0][0];
 
 type EventManagerPlugin = {

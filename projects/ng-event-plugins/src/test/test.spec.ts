@@ -14,7 +14,6 @@ import {shouldCall} from '../decorators/should-call';
 import {EventPluginsModule} from '../module';
 import {BindEventPlugin} from '../plugins/bind.plugin';
 import {SilentEventPlugin} from '../plugins/silent.plugin';
-import {ZoneEventPlugin} from '../plugins/zone.plugin';
 import {asCallable} from '../utils/as-callable';
 
 describe('EventManagers', () => {
@@ -287,15 +286,4 @@ it('@shouldCall works without NgZone', () => {
     SilentEventPlugin.ngZone = zone;
 
     expect(test.flag).toBe(true);
-});
-
-it('Zone plugin gives console.warn', () => {
-    spyOn(window.console, 'warn');
-
-    const plugin = new ZoneEventPlugin();
-
-    plugin.addEventListener()();
-    plugin.addGlobalEventListener()();
-
-    expect(window.console.warn).toHaveBeenCalled();
 });

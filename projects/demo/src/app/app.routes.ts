@@ -12,7 +12,7 @@ export const appRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes, {
-            initialNavigation: 'enabled',
+            initialNavigation: 'enabledNonBlocking',
         }),
     ],
     exports: [RouterModule],

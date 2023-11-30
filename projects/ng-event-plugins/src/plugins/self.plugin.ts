@@ -6,12 +6,14 @@ export class SelfEventPlugin extends AbstractEventPlugin {
     protected readonly modifier = '.self';
 
     addEventListener(element: HTMLElement, event: string, handler: Function): Function {
-        const wrapped = (event: Event) => {
-            if (event.target === event.currentTarget) {
-                handler(event);
-            }
-        };
-
-        return this.manager.addEventListener(element, this.unwrap(event), wrapped);
+        return this.manager.addEventListener(
+            element,
+            this.unwrap(event),
+            (event: Event) => {
+                if (event.target === event.currentTarget) {
+                    handler(event);
+                }
+            },
+        );
     }
 }

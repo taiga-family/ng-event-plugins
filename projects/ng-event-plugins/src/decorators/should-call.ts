@@ -1,5 +1,6 @@
 import {SilentEventPlugin} from '../plugins/silent.plugin';
-import {Predicate} from '../types/predicate';
+
+export type Predicate<T> = (this: T, ...args: any[]) => boolean;
 
 export function shouldCall<T>(predicate: Predicate<T>): MethodDecorator {
     return (_target, _key, desc: PropertyDescriptor) => {

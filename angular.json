@@ -22,7 +22,6 @@
                         "tsConfig": "tsconfig.json",
                         "assets": ["projects/demo/src/favicon.ico"],
                         "styles": ["node_modules/highlight.js/styles/idea.css", "projects/demo/src/styles.css"],
-                        "showCircularDependencies": false,
                         "vendorChunk": true,
                         "extractLicenses": false,
                         "buildOptimizer": false,
@@ -84,7 +83,8 @@
                         "development": {
                             "optimization": false,
                             "sourceMap": true,
-                            "extractLicenses": false
+                            "extractLicenses": false,
+                            "vendorChunk": true
                         }
                     },
                     "defaultConfiguration": "production"
@@ -151,6 +151,5 @@
                 }
             }
         }
-    },
-    "defaultProject": "ng-event-plugins"
+    }
 }

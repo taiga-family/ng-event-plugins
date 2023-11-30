@@ -7,7 +7,6 @@ import {PreventEventPlugin} from '../plugins/prevent.plugin';
 import {SelfEventPlugin} from '../plugins/self.plugin';
 import {SilentEventPlugin} from '../plugins/silent.plugin';
 import {StopEventPlugin} from '../plugins/stop.plugin';
-import {ZoneEventPlugin} from '../plugins/zone.plugin';
 
 const PLUGINS = [
     SilentEventPlugin,
@@ -16,7 +15,6 @@ const PLUGINS = [
     PreventEventPlugin,
     SelfEventPlugin,
     StopEventPlugin,
-    ZoneEventPlugin,
 ];
 
 export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map(useClass => ({
