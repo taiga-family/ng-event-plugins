@@ -13,11 +13,11 @@
         event is unnecessary, because when item is already focused, you do not need to do anything and there is no need
         to trigger change detection.
     </p>
-    <code>@tinkoff/ng-event-plugins</code>
+    <code>&#64;tinkoff/ng-event-plugins</code>
     allows you to skip events using
     <code>.silent</code>
     event modifier and
-    <code>@shouldCall</code>
+    <code>&#64;shouldCall</code>
     decorator. It also adds
     <code>.stop</code>
     and
@@ -40,7 +40,7 @@
         When Esc button is pressed, popup should close. However, if dropdown is opened in Select — Esc button should
         only close the dropdown. This can be achieved by stopping event propagation. But if the dropdown is already
         closed, Select should not handle Esc keydown event. This can be achieved using
-        <code>@shouldCall</code>
+        <code>&#64;shouldCall</code>
         decorator.
     </blockquote>
 </popup>
