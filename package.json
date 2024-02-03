@@ -79,7 +79,7 @@
         "@commitlint/cli": "18.6.0",
         "@commitlint/config-conventional": "18.6.0",
         "@nguniversal/builders": "15.2.1",
-        "@taiga-ui/prettier-config": "0.7.2",
+        "@taiga-ui/prettier-config": "0.7.3",
         "@tinkoff/eslint-config": "2.0.0",
         "@tinkoff/eslint-config-angular": "2.0.0",
         "@tinkoff/prettier-config": "2.0.0",
