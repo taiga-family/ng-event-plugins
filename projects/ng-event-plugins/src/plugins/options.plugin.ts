@@ -20,6 +20,11 @@ export class OptionsEventPlugin extends AbstractEventPlugin {
             capture: event.includes('.capture'),
         });
 
-        return () => element.removeEventListener(this.unwrap(event), handler);
+        return () =>
+            element.removeEventListener(
+                this.unwrap(event),
+                handler,
+                event.includes('.capture'),
+            );
     }
 }
