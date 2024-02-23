@@ -17,7 +17,7 @@ jobs:
         env:
           NODE_OPTIONS: --openssl-legacy-provider
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@v4.0.2
 
 concurrency:
   group: ci-${{ github.head_ref }}
