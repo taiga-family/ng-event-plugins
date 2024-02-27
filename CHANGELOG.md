@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.1.1 (2024-02-27)
+
+### Bug Fixes
+
+- **capture**: fix memory leak in plugin ([#218](https://github.com/taiga-family/ng-event-plugins/issues/218))
+  ([8db8097](https://github.com/taiga-family/ng-event-plugins/commit/8db8097496d660f70e239d9a7ccfa802a8a3a287))
+
 ## [3.1.0](https://github.com/TinkoffCreditSystems/ng-event-plugins/compare/v3.0.0...v3.1.0) (2022-12-23)
 
 ### Features
