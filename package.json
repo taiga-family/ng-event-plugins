@@ -81,7 +81,7 @@
         "@nguniversal/builders": "15.2.1",
         "@taiga-ui/prettier-config": "0.10.0",
         "@tinkoff/eslint-config": "2.0.0",
-        "@tinkoff/eslint-config-angular": "2.0.0",
+        "@tinkoff/eslint-config-angular": "2.0.2",
         "@tinkoff/prettier-config": "2.0.0",
         "@types/estree": "1.0.5",
         "@types/express": "4.17.21",
