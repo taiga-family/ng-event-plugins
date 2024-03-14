@@ -1,3 +1,3 @@
-export function asCallable<T>(a: T): T & Function {
+export function asCallable<T>(a: T): Function & T {
     return a as any;
 }

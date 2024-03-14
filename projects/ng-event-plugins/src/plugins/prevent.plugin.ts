@@ -6,7 +6,11 @@ import {AbstractEventPlugin} from './abstract.plugin';
 export class PreventEventPlugin extends AbstractEventPlugin {
     protected readonly modifier = '.prevent';
 
-    addEventListener(element: HTMLElement, event: string, handler: Function): Function {
+    public addEventListener(
+        element: HTMLElement,
+        event: string,
+        handler: Function,
+    ): Function {
         return this.manager.addEventListener(
             element,
             this.unwrap(event),

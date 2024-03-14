@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+
 import {AppBrowserModule} from './app.browser.module';
 import {AppComponent} from './app.component';
 
@@ -14,6 +15,6 @@ describe('Test dummy', () => {
     });
 
     it('AppComponent compiles properly', () => {
-        expect(component).toBeTruthy();
+        void expect(component).toBeTruthy();
     });
 });

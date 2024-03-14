@@ -1,14 +1,19 @@
-import {Injectable, NgZone} from '@angular/core';
+import type {NgZone} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {AbstractEventPlugin} from './abstract.plugin';
 
 @Injectable()
 export class SilentEventPlugin extends AbstractEventPlugin {
-    static ngZone?: NgZone;
+    public static ngZone?: NgZone;
 
-    protected readonly modifier = '.silent';
+    public readonly modifier = '.silent';
 
-    addEventListener(element: HTMLElement, event: string, handler: Function): Function {
+    public addEventListener(
+        element: HTMLElement,
+        event: string,
+        handler: Function,
+    ): Function {
         SilentEventPlugin.ngZone = this.manager.getZone();
 
         return SilentEventPlugin.ngZone.runOutsideAngular(() =>
