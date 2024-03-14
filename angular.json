@@ -14,12 +14,11 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "baseHref": "/",
-                        "deployUrl": "/",
                         "outputPath": "dist/demo/browser",
                         "index": "projects/demo/src/index.html",
                         "main": "projects/demo/src/main.browser.ts",
                         "polyfills": "projects/demo/src/polyfills.ts",
-                        "tsConfig": "tsconfig.json",
+                        "tsConfig": "projects/demo/tsconfig.json",
                         "assets": ["projects/demo/src/favicon.ico"],
                         "styles": ["node_modules/highlight.js/styles/idea.css", "projects/demo/src/styles.css"],
                         "vendorChunk": true,
@@ -33,7 +32,6 @@
                     "configurations": {
                         "production": {
                             "optimization": true,
-                            "outputHashing": "all",
                             "sourceMap": false,
                             "namedChunks": false,
                             "buildOptimizer": true,
@@ -58,9 +56,13 @@
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "demo:build:production"
+                            "browserTarget": "demo:build:development"
+                        },
+                        "development": {
+                            "browserTarget": "demo:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development"
                 },
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
@@ -72,7 +74,6 @@
                     },
                     "configurations": {
                         "production": {
-                            "outputHashing": "media",
                             "fileReplacements": [
                                 {
                                     "replace": "projects/demo/src/environments/environment.ts",

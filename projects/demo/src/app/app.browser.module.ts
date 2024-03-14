@@ -3,12 +3,12 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {EventPluginsModule} from '@tinkoff/ng-event-plugins';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
+
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routes';
 import {StaticModule} from './modules/static/static.module';
 
 @NgModule({
-    bootstrap: [AppComponent],
     imports: [
         BrowserModule.withServerTransition({appId: 'demo'}),
         EventPluginsModule,
@@ -29,15 +29,16 @@ import {StaticModule} from './modules/static/static.module';
         {
             provide: HIGHLIGHT_OPTIONS,
             useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/core'),
-                lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+                coreLibraryLoader: async () => import('highlight.js/lib/core'),
                 languages: {
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    less: () => import('highlight.js/lib/languages/less'),
-                    xml: () => import('highlight.js/lib/languages/xml'),
+                    typescript: async () =>
+                        import('highlight.js/lib/languages/typescript'),
+                    less: async () => import('highlight.js/lib/languages/less'),
+                    xml: async () => import('highlight.js/lib/languages/xml'),
                 },
             },
         },
     ],
+    bootstrap: [AppComponent],
 })
 export class AppBrowserModule {}

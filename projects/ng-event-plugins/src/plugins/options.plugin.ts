@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
+
 import {AbstractEventPlugin} from './abstract.plugin';
 
 @Injectable()
 export class OptionsEventPlugin extends AbstractEventPlugin {
     protected readonly modifier = 'capture.once.passive';
 
-    supports(event: string): boolean {
+    public override supports(event: string): boolean {
         return event.includes('.') && !this.unwrap(event).includes('.');
     }
 
-    addEventListener(
+    public addEventListener(
         element: HTMLElement,
         event: string,
         handler: EventListener,

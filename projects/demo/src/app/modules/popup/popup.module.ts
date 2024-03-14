@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {PopupComponent} from './popup.component';
 
 @NgModule({

@@ -1,4 +1,4 @@
-import {EventManager} from '@angular/platform-browser';
+import type {EventManager} from '@angular/platform-browser';
 
 // TODO: Type is exposed since Angular 16, remove when updated
 type EventManagerArg = ConstructorParameters<typeof EventManager>[0][0];
@@ -10,21 +10,16 @@ type EventManagerPlugin = {
 export abstract class AbstractEventPlugin implements EventManagerPlugin {
     protected abstract readonly modifier: string;
 
-    manager!: EventManager;
+    public manager!: EventManager;
 
-    abstract addEventListener(
+    public abstract addEventListener(
         element: HTMLElement,
         event: string,
         handler: Function,
     ): Function;
 
-    supports(event: string): boolean {
+    public supports(event: string): boolean {
         return event.includes(this.modifier);
-    }
-
-    /** This is not used in Ivy anymore */
-    addGlobalEventListener(): Function {
-        return () => {};
     }
 
     protected unwrap(event: string): string {

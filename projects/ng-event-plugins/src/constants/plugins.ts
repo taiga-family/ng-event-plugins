@@ -1,4 +1,4 @@
-import {Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 
 import {BindEventPlugin} from '../plugins/bind.plugin';

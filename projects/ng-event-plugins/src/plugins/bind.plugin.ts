@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {concat, defer, EMPTY, Observable} from 'rxjs';
-import {takeWhile} from 'rxjs/operators';
+import type {Observable} from 'rxjs';
+import {concat, defer, EMPTY, takeWhile} from 'rxjs';
+
 import {dasharize} from '../utils/dasharize';
 import {AbstractEventPlugin} from './abstract.plugin';
 
@@ -8,7 +9,7 @@ import {AbstractEventPlugin} from './abstract.plugin';
 export class BindEventPlugin extends AbstractEventPlugin {
     protected readonly modifier = '$';
 
-    addEventListener(
+    public addEventListener(
         element: HTMLElement & Record<string, Observable<unknown>>,
         event: string,
     ): Function {
@@ -45,6 +46,8 @@ export class BindEventPlugin extends AbstractEventPlugin {
             return v => element.style.setProperty(dasharize(value), `${v}${unit}`);
         }
 
-        return v => (element[key] = v);
+        return v => {
+            element[key] = v;
+        };
     }
 }
