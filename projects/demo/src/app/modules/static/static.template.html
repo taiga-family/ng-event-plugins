@@ -1,6 +1,6 @@
 <h2>Example</h2>
 <p class="flex">
-    <custom-select [items]="items"></custom-select>
+    <custom-select [items]="items" />
     <button (click)="onOpened()">Show popup</button>
 </p>
 <blockquote>
@@ -35,7 +35,7 @@
     (closed)="onClosed()"
 >
     <h1>Popup</h1>
-    <custom-select [items]="items"></custom-select>
+    <custom-select [items]="items" />
     <blockquote>
         When Esc button is pressed, popup should close. However, if dropdown is opened in Select — Esc button should
         only close the dropdown. This can be achieved by stopping event propagation. But if the dropdown is already
