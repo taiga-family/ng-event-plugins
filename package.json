@@ -108,7 +108,7 @@
         "@types/jasmine": "5.1.4",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "20.11.27",
-        "core-js": "3.36.0",
+        "core-js": "3.36.1",
         "husky": "9.0.11",
         "jasmine-core": "5.1.2",
         "jasmine-spec-reporter": "7.0.0",
