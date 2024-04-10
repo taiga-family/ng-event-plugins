@@ -75,6 +75,7 @@ describe('EventManagers', () => {
         readonly test = asCallable(new BehaviorSubject<number | null>(1));
 
         flag = false;
+        custom = false;
         onStoppedClick = jasmine.createSpy('onStoppedClick');
         onPreventedClick = jasmine.createSpy('onPreventedClick');
         onWrapper = jasmine.createSpy('onWrapper');
@@ -87,6 +88,11 @@ describe('EventManagers', () => {
         @HostListener('document:click.silent.stop.prevent')
         onFilteredClicks(_bubbles: boolean): void {
             this.flag = true;
+        }
+
+        @HostListener('document>custom')
+        public onCustom(): void {
+            this.custom = true;
         }
     }
 
@@ -109,6 +115,15 @@ describe('EventManagers', () => {
         testComponent.onStoppedClick.calls.reset();
         testComponent.onPreventedClick.calls.reset();
         testComponent.onBubbled.calls.reset();
+    });
+
+    it('Global events work', () => {
+        const event = new CustomEvent('custom');
+
+        document.dispatchEvent(event);
+        fixture.detectChanges();
+
+        void expect(testComponent.custom).toBe(true);
     });
 
     it('Clicks are stopped', () => {
