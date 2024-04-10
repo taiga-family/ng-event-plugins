@@ -82,7 +82,7 @@ onScroll(_element: HTMLElement): void {
 
 ```ts
 @HostListener('visualViewport>resize', ['$event.target'])
-onPunchZoom({ scale }: VisualViewport) {
+onPinchZoom({ scale }: VisualViewport) {
     console.log(scale)
 }
 ```
