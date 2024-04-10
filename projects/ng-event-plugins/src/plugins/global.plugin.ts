@@ -12,7 +12,8 @@ export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
             return name =>
                 name === 'body'
                     ? document.body
-                    : (document.defaultView as any)[name] || document.defaultView;
+                    : (document.defaultView as any)[name] ||
+                      document.createElement('div');
         },
     },
 );
