@@ -1,11 +1,12 @@
 import 'zone.js/node';
 
+import {existsSync} from 'node:fs';
+import {join} from 'node:path';
+
 import {APP_BASE_HREF} from '@angular/common';
 import {ngExpressEngine} from '@nguniversal/express-engine';
 import type {Express} from 'express';
 import express from 'express';
-import {existsSync} from 'fs';
-import {join} from 'path';
 
 import {AppServerModule} from './src/main.server';
 
