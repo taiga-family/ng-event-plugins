@@ -77,6 +77,16 @@ onScroll(_element: HTMLElement): void {
 }
 ```
 
+4. Angular global events only support `body`, `window` and `document`. You can listen to events on any global object
+   with these plugins by replacing `:` with `>` symbol, for example:
+
+```ts
+@HostListener('visualViewport>resize', ['$event.target'])
+onPinchZoom({ scale }: VisualViewport) {
+    console.log(scale)
+}
+```
+
 > All examples above work the same when used with `@HostListener` and `CustomEvent`
 
 ### Important notes
