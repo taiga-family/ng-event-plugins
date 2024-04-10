@@ -15,7 +15,7 @@ jobs:
       - run: npm run lint
       - run: npm run prettier -- --check
       - run: npm run test
-      - uses: codecov/codecov-action@v4.1.0
+      - uses: codecov/codecov-action@v4.3.0
         continue-on-error: true
 
 concurrency:
