@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.3
-      - uses: taiga-family/ci/actions/setup/node@v1.55.12
+      - uses: taiga-family/ci/actions/setup/node@v1.55.13
       - run: npm run build
       - run: npm run build:demo
       - run: npm run lint
