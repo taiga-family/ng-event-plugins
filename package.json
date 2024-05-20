@@ -71,7 +71,8 @@
         "rules": {
             "@typescript-eslint/ban-types": "off",
             "import/no-webpack-loader-syntax": "off",
-            "jest/no-jasmine-globals": "off"
+            "jest/no-jasmine-globals": "off",
+            "jest/prefer-importing-jest-globals": "off"
         },
         "root": true
     },
