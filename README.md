@@ -30,6 +30,7 @@ _stopPropagation()_.
    - `.passive` to add
      [passive event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners)
    - `.once` to remove event listener after first callback
+   - `resize` to watch for elements changing dimensions with `ResizeObserver`
 
    For example:
 
@@ -98,46 +99,6 @@ onPinchZoom({ scale }: VisualViewport) {
 
 - `.silent` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or `keydown.arrowDown`
   since Angular re-enters `NgZone` inside internal handlers.
-
-## Observable host bindings
-
-In this library there's also a plugin that enables observable host bindings. Sounds weird to do host binding with event
-plugin, but the code is actually pretty simple. You can read more about it in
-[this article](https://indepth.dev/posts/1429/making-hostbinding-work-with-observables).
-
-To use it you need to couple `@HostListener` and `@HostBinding` on the same `Observable` property with following syntax:
-
-```ts
-@HostBinding('$.disabled')
-@HostListener('$.disabled')
-readonly disabled$ = asCallable(this.service.loading$)
-```
-
-This supports all the native Angular syntax, such as `class.class-name` or `style.width.px`.
-
-**IMPORTANT NOTES:**
-
-- Until [this issue](https://github.com/angular/angular/issues/12045) is resolved you would have to use
-  `NO_ERRORS_SCHEMA` in your module in order to bind to arbitrary properties or use `host` in `@Component` decorator:
-  ```ts
-  @Component({
-    // ...
-    host: {
-      '[$.disabled]': 'disabled$',
-      '($.disabled)': 'disabled$',
-    },
-  })
-  ```
-- `asCallable` is a utility function from this library that simply adds `Function` to the type so Angular thinks it
-  could be a host listener, unnecessary if you use `host` since it is not type checked.
-- To bind attributes you need to add `.attr` modifier in the end, not the beginning like in basic Angular binding. This
-  is due to Angular using regexp to match for `attr.` string in `@HostBinding` decorator:
-
-```ts
-@HostBinding('$.aria-label.attr')
-@HostListener('$.aria-label.attr')
-readonly label$ = asCallable(this.translations.get$('label'));
-```
 
 ## Demo
 

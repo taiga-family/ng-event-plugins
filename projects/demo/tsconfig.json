@@ -1,4 +1,7 @@
 {
     "extends": "../../tsconfig.json",
-    "exclude": ["src/test.ts", "**/*.spec.ts", "karma.conf.js"]
+    "exclude": ["src/test.ts", "**/*.spec.ts", "karma.conf.js"],
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    }
 }

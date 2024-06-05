@@ -8,12 +8,11 @@ import {
 } from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {By, EventManager} from '@angular/platform-browser';
+import {By} from '@angular/platform-browser';
 import {BehaviorSubject, identity} from 'rxjs';
 
 import {shouldCall} from '../decorators/should-call';
 import {EventPluginsModule} from '../module';
-import {BindEventPlugin} from '../plugins/bind.plugin';
 import {SilentEventPlugin} from '../plugins/silent.plugin';
 import {asCallable} from '../utils/as-callable';
 
@@ -209,39 +208,6 @@ describe('EventManagers', () => {
         fixture.detectChanges();
 
         void expect(testComponent.onBubbled).toHaveBeenCalled();
-    });
-
-    it('Observable bindings work', () => {
-        void expect(
-            testComponent.elementRef.nativeElement.getAttribute('data-value'),
-        ).toBe('1');
-        void expect(testComponent.elementRef.nativeElement.tabIndex).toBe(1);
-        void expect(testComponent.elementRef.nativeElement.style.marginTop).toBe('1%');
-        void expect(
-            testComponent.elementRef.nativeElement.classList.contains('active'),
-        ).toBe(true);
-    });
-
-    it('Observable bindings are updated', () => {
-        testComponent.test.next(null);
-
-        void expect(
-            testComponent.elementRef.nativeElement.getAttribute('data-value'),
-        ).toBeNull();
-        void expect(testComponent.elementRef.nativeElement.tabIndex).toBe(0);
-        void expect(testComponent.elementRef.nativeElement.style.marginTop).toBe('1%');
-        void expect(
-            testComponent.elementRef.nativeElement.classList.contains('active'),
-        ).toBe(false);
-    });
-
-    it('bind plugin doesnt crash if observable is missing', () => {
-        const bind = new BindEventPlugin();
-        const element: any = document.createElement('div');
-
-        bind.manager = TestBed.inject(EventManager);
-
-        void expect(() => bind.addEventListener(element, 'test')).not.toThrow();
     });
 
     describe('shouldCall does not crash without zone', () => {
