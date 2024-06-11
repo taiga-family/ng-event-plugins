@@ -1,6 +1,6 @@
 {
     "name": "demo",
+    "version": "4.0.0",
     "private": true,
-    "web-types": "../ng-event-plugins/web-types.json",
-    "version": "4.0.0"
+    "web-types": "../ng-event-plugins/web-types.json"
 }

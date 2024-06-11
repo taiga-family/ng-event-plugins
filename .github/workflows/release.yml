@@ -1,5 +1,10 @@
 name: ⚠️ Release
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - projects/ng-event-plugins/**
   workflow_dispatch:
     inputs:
       forcePush:
