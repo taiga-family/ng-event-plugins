@@ -6,7 +6,7 @@
         "sourceMap": true,
         "target": "ES2022",
         "paths": {
-            "@tinkoff/ng-event-plugins": ["projects/ng-event-plugins/src/public-api"]
+            "@tinkoff/ng-event-plugins": ["projects/ng-event-plugins/src"]
         }
     }
 }
