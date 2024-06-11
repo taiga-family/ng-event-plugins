@@ -110,8 +110,8 @@ explaining how this library works
 
 ## Maintained
 
-**@taiga-ui/event-plugins** is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which
-is backed and used by a large enterprise. This means you can rely on timely support and continuous development.
+**@taiga-ui/event-plugins** is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is
+backed and used by a large enterprise. This means you can rely on timely support and continuous development.
 
 ## License
 
