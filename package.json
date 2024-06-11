@@ -18,11 +18,13 @@
         "change",
         "detection"
     ],
-    "workspaces": ["projects/*"],
     "homepage": "https://github.com/taiga-family/ng-event-plugins#README",
     "bugs": "https://github.com/taiga-family/ng-event-plugins/issues",
     "repository": "https://github.com/taiga-family/ng-event-plugins",
     "license": "Apache-2.0",
+    "workspaces": [
+        "projects/*"
+    ],
     "scripts": {
         "postinstall": "husky install",
         "nx": "nx",
