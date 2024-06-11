@@ -1,3 +1,48 @@
+
+
+# 4.0.0 (2024-06-11)
+
+
+### Bug Fixes
+
+* **aot:** add utility function to spoof callable in AOT compiler ([b0bed98](https://github.com/taiga-family/ng-event-plugins/commit/b0bed9801f43e5651283bca0817ec899cac7fd4b))
+* **bind:** add nullish coalescing instead of resetting element property ([0562714](https://github.com/taiga-family/ng-event-plugins/commit/0562714e1fbbb6df84c8c8121e7fb54e32817779))
+* **bind:** removes attribute if null provided ([113d9fb](https://github.com/taiga-family/ng-event-plugins/commit/113d9fb4e9ee969dc970a88efbace6ffcdab70af))
+* correct schema reference ([#113](https://github.com/taiga-family/ng-event-plugins/issues/113)) ([c622db2](https://github.com/taiga-family/ng-event-plugins/commit/c622db2b78993cf71534090561205631d1d6a008))
+* fix memory leak in `capture` plugin ([#218](https://github.com/taiga-family/ng-event-plugins/issues/218)) ([#219](https://github.com/taiga-family/ng-event-plugins/issues/219)) ([5fe51f8](https://github.com/taiga-family/ng-event-plugins/commit/5fe51f8579ac8ea0e250527976ea5fc5531ed52d))
+* **module:** improve error messages ([a86cd79](https://github.com/taiga-family/ng-event-plugins/commit/a86cd79a65c6aa632361bfea842ac80de1d9307b))
+* **shouldCall:** fix for AOT build ([3688da4](https://github.com/taiga-family/ng-event-plugins/commit/3688da445a9d9792d7d4b2fe70c956099901e933))
+* **web-types:** add descriptions and version ([9e39ce7](https://github.com/taiga-family/ng-event-plugins/commit/9e39ce77d5d33798e083b9c0176ecded9b46d13e))
+
+
+### Features
+
+* `Resize` add new plugin ([#319](https://github.com/taiga-family/ng-event-plugins/issues/319)) ([2697ad2](https://github.com/taiga-family/ng-event-plugins/commit/2697ad2f8d815209a1f1a1535efbd139b8da2c28))
+* add web-types for autocomplete ([#30](https://github.com/taiga-family/ng-event-plugins/issues/30)) ([53c5852](https://github.com/taiga-family/ng-event-plugins/commit/53c58520fa0521dd658125211efd38c1ebe747d4))
+* **bind:** add plugin for Observable host binding ([#11](https://github.com/taiga-family/ng-event-plugins/issues/11)) ([ab68909](https://github.com/taiga-family/ng-event-plugins/commit/ab68909b583960f8991e3ea6673aa1a9b57dc5bf))
+* **bind:** add style dasharize ([2cdf77e](https://github.com/taiga-family/ng-event-plugins/commit/2cdf77ea7fa73d98ef3ef9d11766330ef7e0be48))
+* **capture:** add new modifier .capture to listen to events in capture phase ([#10](https://github.com/taiga-family/ng-event-plugins/issues/10)) ([20a372b](https://github.com/taiga-family/ng-event-plugins/commit/20a372b1df077787e15cdb2b6806c842f6445978))
+* **deps:** update Angular ([#142](https://github.com/taiga-family/ng-event-plugins/issues/142)) ([894a85f](https://github.com/taiga-family/ng-event-plugins/commit/894a85fdfd69fd4771f493e6512dc2903972e5c0))
+* **global:** add new plugin ([cadf832](https://github.com/taiga-family/ng-event-plugins/commit/cadf832c34592443bc6f16884078e5eddd6083fc))
+* **module:** add assertion to keep module singleton ([1ff3226](https://github.com/taiga-family/ng-event-plugins/commit/1ff3226bb9f4667c39bd4b28844ab995b8f744e3))
+* **module:** add module for clearer addition ([#22](https://github.com/taiga-family/ng-event-plugins/issues/22)) ([a1a947d](https://github.com/taiga-family/ng-event-plugins/commit/a1a947d6a9970b716fb08cc5848466fabf4b6cce))
+* **options:** cover other `addEventListener` options ([#25](https://github.com/taiga-family/ng-event-plugins/issues/25)) ([13f4872](https://github.com/taiga-family/ng-event-plugins/commit/13f487298ee9715314a0f5afe178f35bb353bbb6))
+* **self:** add new plugin ([#14](https://github.com/taiga-family/ng-event-plugins/issues/14)) ([0193b6f](https://github.com/taiga-family/ng-event-plugins/commit/0193b6ff1efe9b85dcb0a748e65f5cc4a5ca8d63))
+* **silent:** simplify getting `NgZone` in `[@should](https://github.com/should)Call` ([#50](https://github.com/taiga-family/ng-event-plugins/issues/50)) ([64872cd](https://github.com/taiga-family/ng-event-plugins/commit/64872cd10145173d5121efbd1abf8d57363292b8))
+* use taiga-ui scope ([8dc54b9](https://github.com/taiga-family/ng-event-plugins/commit/8dc54b9ec39b20e9d7947628c4a916215e8e7574))
+
+
+### Reverts
+
+* Revert "chore(deps): pin dependencies (#212)" ([2671380](https://github.com/taiga-family/ng-event-plugins/commit/26713803c354062b17925714506975667fae817c)), closes [#212](https://github.com/taiga-family/ng-event-plugins/issues/212)
+* Revert "chore(deps): pin dependencies (#211)" ([44d649d](https://github.com/taiga-family/ng-event-plugins/commit/44d649d04ef3e3d90acf628ddd45b89164c3f27b)), closes [#211](https://github.com/taiga-family/ng-event-plugins/issues/211)
+
+
+### BREAKING CHANGES
+
+* `BindEventPlugin` has been removed
+* **capture:** Bump Angular version to 9
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See
