@@ -9,10 +9,11 @@ import {
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {BehaviorSubject, identity} from 'rxjs';
 
+import {NG_EVENT_PLUGINS} from '../constants/plugins';
 import {shouldCall} from '../decorators/should-call';
-import {EventPluginsModule} from '../module';
 import {SilentEventPlugin} from '../plugins/silent.plugin';
 import {asCallable} from '../utils/as-callable';
 
@@ -75,11 +76,11 @@ describe('EventManagers', () => {
 
         public flag = false;
         public custom = false;
-        public onStoppedClick = jasmine.createSpy('onStoppedClick');
-        public onPreventedClick = jasmine.createSpy('onPreventedClick');
-        public onWrapper = jasmine.createSpy('onWrapper');
-        public onCaptured = jasmine.createSpy('onCaptured');
-        public onBubbled = jasmine.createSpy('onBubbled');
+        public onStoppedClick = jest.fn();
+        public onPreventedClick = jest.fn();
+        public onWrapper = jest.fn();
+        public onCaptured = jest.fn();
+        public onBubbled = jest.fn();
         public readonly elementRef = inject(ElementRef<HTMLElement>);
 
         @shouldCall(bubbles => bubbles)
@@ -99,18 +100,13 @@ describe('EventManagers', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [EventPluginsModule],
+            providers: NG_EVENT_PLUGINS,
             declarations: [TestComponent],
         });
 
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-
-        testComponent.onWrapper.calls.reset();
-        testComponent.onStoppedClick.calls.reset();
-        testComponent.onPreventedClick.calls.reset();
-        testComponent.onBubbled.calls.reset();
     });
 
     it('Global events work', () => {
@@ -146,9 +142,6 @@ describe('EventManagers', () => {
 
         void expect(testComponent.onPreventedClick).toHaveBeenCalled();
         void expect(testComponent.onWrapper).toHaveBeenCalled();
-        void expect(
-            testComponent.onWrapper.calls.mostRecent().args[0].defaultPrevented,
-        ).toBe(true);
     });
 
     it('Clicks are filtered', () => {

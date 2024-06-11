@@ -1,9 +1,5 @@
-/**
- * Public API Surface of @tinkoff/ng-event-plugins
- */
 export * from './constants/plugins';
 export * from './decorators/should-call';
-export * from './module';
 export * from './plugins/global.plugin';
 export * from './plugins/options.plugin';
 export * from './plugins/prevent.plugin';

@@ -5,6 +5,6 @@
     ],
     "dest": "../../dist/ng-event-plugins",
     "lib": {
-        "entryFile": "src/public-api.ts"
+        "entryFile": "src/index.ts"
     }
 }

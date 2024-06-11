@@ -31,6 +31,9 @@ export class SelectComponent {
     private readonly document = inject(DOCUMENT);
     private readonly elementRef = inject(ElementRef);
 
+    @HostBinding('class._open')
+    protected open = false;
+
     @Input()
     public items: readonly string[] = [];
 
@@ -39,9 +42,6 @@ export class SelectComponent {
 
     @Output()
     public readonly valueChange = new EventEmitter<string>();
-
-    @HostBinding('class._open')
-    protected open = false;
 
     @HostBinding('class._focused')
     protected get focused(): boolean {
