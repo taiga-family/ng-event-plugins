@@ -13,7 +13,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {shouldCall} from '@tinkoff/ng-event-plugins';
+import {shouldCall} from '@taiga-ui/event-plugins';
 
 @Component({
     selector: 'custom-select',

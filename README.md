@@ -1,11 +1,11 @@
 # Angular Event Plugins
 
-[![npm version](https://img.shields.io/npm/v/@tinkoff/ng-event-plugins.svg)](https://npmjs.com/package/@tinkoff/ng-event-plugins)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@tinkoff/ng-event-plugins)](https://bundlephobia.com/result?p=@tinkoff/ng-event-plugins)
+[![npm version](https://img.shields.io/npm/v/@taiga-ui/event-plugins.svg)](https://npmjs.com/package/@taiga-ui/event-plugins)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@taiga-ui/event-plugins)](https://bundlephobia.com/result?p=@taiga-ui/event-plugins)
 [![Coverage Status](https://codecov.io/gh/taiga-family/ng-event-plugins/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/ng-event-plugins/tree/main/projects)
 [![telegram chat](https://img.shields.io/badge/support-Contact%20us-blue)](https://t.me/taiga_ui)
 
-**@tinkoff/ng-event-plugins** is a tiny (1KB gzip) library for optimizing change detection cycles for performance
+**@taiga-ui/event-plugins** is a tiny (1KB gzip) library for optimizing change detection cycles for performance
 sensitive events (such as _touchmove_, _scroll_, _drag_ etc.) and declarative _preventDefault()_ and
 _stopPropagation()_.
 
@@ -62,7 +62,7 @@ _stopPropagation()_.
 ```
 
 ```typescript
-import {shouldCall} from '@tinkoff/ng-event-plugins';
+import {shouldCall} from '@taiga-ui/event-plugins';
 
 export function scrollFilter({
  scrollTop, scrollHeight, clientHeight
@@ -110,13 +110,13 @@ explaining how this library works
 
 ## Maintained
 
-**@tinkoff/ng-event-plugins** is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which
+**@taiga-ui/event-plugins** is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which
 is backed and used by a large enterprise. This means you can rely on timely support and continuous development.
 
 ## License
 
 🆓 Feel free to use our library in your commercial and private applications
 
-All **@tinkoff/ng-event-plugins** packages are covered by [Apache 2.0](/LICENSE)
+All **@taiga-ui/event-plugins** packages are covered by [Apache 2.0](/LICENSE)
 
 Read more about this license [here](https://choosealicense.com/licenses/apache-2.0/)
