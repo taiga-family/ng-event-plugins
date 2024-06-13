@@ -15,7 +15,7 @@ export class ResizePlugin extends AbstractEventPlugin {
         _: string,
         handler: Function,
     ): Function {
-        if (typeof ResizeObserver === 'undefined') {
+        if (typeof ResizeObserver === 'undefined' || !(element instanceof Element)) {
             return () => {};
         }
 
