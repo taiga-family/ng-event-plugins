@@ -1,5 +1,12 @@
 
 
+* fix: do not listen `Window` (#326) (c0a99bc)
+* chore(deps): update taiga-family/ci action to v1.62.3 (#325) (10461fe)
+* chore(deps): update actions/checkout action to v4.1.7 (#324) (4c99150)
+* chore: fixup (31272b2)
+* chore(deps): update dependency lint-staged to v15.2.7 (#323) (8b84706)
+* chore: fixup (3f34c43)
+
 # 4.0.0 (2024-06-11)
 
 
