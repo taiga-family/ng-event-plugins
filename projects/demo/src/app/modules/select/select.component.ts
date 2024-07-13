@@ -65,7 +65,7 @@ export class SelectComponent {
     }
 
     // Only react to mousemove if focus is required
-    @shouldCall(element => element !== document.activeElement)
+    @shouldCall((element) => element !== document.activeElement)
     protected onMouseMove(element: HTMLElement): void {
         element.focus();
     }
@@ -79,7 +79,7 @@ export class SelectComponent {
     }
 
     // Only react to arrow up if we are not on the first item
-    @shouldCall(currentIndex => !!currentIndex)
+    @shouldCall((currentIndex) => !!currentIndex)
     protected onArrowUp(currentIndex: number): void {
         this.options
             ?.find?.((_item, index) => index === currentIndex - 1)

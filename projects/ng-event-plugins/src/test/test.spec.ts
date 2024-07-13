@@ -83,7 +83,7 @@ describe('EventManagers', () => {
         public onBubbled = jest.fn();
         public readonly elementRef = inject(ElementRef<HTMLElement>);
 
-        @shouldCall(bubbles => bubbles)
+        @shouldCall((bubbles) => bubbles)
         @HostListener('document:click.silent.stop.prevent')
         public onFilteredClicks(_bubbles: boolean): void {
             this.flag = true;
@@ -109,7 +109,7 @@ describe('EventManagers', () => {
         fixture.detectChanges();
     });
 
-    it('Global events work', () => {
+    it('global events work', () => {
         const event = new CustomEvent('custom');
 
         document.dispatchEvent(event);
@@ -118,7 +118,7 @@ describe('EventManagers', () => {
         void expect(testComponent.custom).toBe(true);
     });
 
-    it('Clicks are stopped', () => {
+    it('clicks are stopped', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(
             By.css('#stopped-clicks'),
@@ -131,7 +131,7 @@ describe('EventManagers', () => {
         void expect(testComponent.onStoppedClick).toHaveBeenCalled();
     });
 
-    it('Clicks go through with default prevented', () => {
+    it('clicks go through with default prevented', () => {
         const event = new Event('click', {bubbles: true, cancelable: true});
         const element = fixture.debugElement.query(
             By.css('#prevented-clicks'),
@@ -144,7 +144,7 @@ describe('EventManagers', () => {
         void expect(testComponent.onWrapper).toHaveBeenCalled();
     });
 
-    it('Clicks are filtered', () => {
+    it('clicks are filtered', () => {
         const event = new Event('click');
         const element = fixture.debugElement.query(
             By.css('#filtered-clicks'),
@@ -156,7 +156,7 @@ describe('EventManagers', () => {
         void expect(testComponent.flag).toBe(false);
     });
 
-    it('Clicks go through filtered', () => {
+    it('clicks go through filtered', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(
             By.css('#filtered-clicks'),
@@ -168,7 +168,7 @@ describe('EventManagers', () => {
         void expect(testComponent.flag).toBe(true);
     });
 
-    it('Clicks are captured', () => {
+    it('clicks are captured', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(
             By.css('#captured-clicks'),
@@ -180,7 +180,7 @@ describe('EventManagers', () => {
         void expect(testComponent.onCaptured).not.toHaveBeenCalled();
     });
 
-    it('Self listeners not triggered on bubbled events', () => {
+    it('self listeners not triggered on bubbled events', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(
             By.css('#bubbled-clicks'),
@@ -192,7 +192,7 @@ describe('EventManagers', () => {
         void expect(testComponent.onBubbled).not.toHaveBeenCalled();
     });
 
-    it('Self listeners triggered on events originated on the same element', () => {
+    it('self listeners triggered on events originated on the same element', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(By.css('#bubbled-clicks'))
             .nativeElement.parentElement;

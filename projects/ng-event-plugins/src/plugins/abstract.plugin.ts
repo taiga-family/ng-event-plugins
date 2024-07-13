@@ -25,7 +25,7 @@ export abstract class AbstractEventPlugin implements EventManagerPlugin {
     protected unwrap(event: string): string {
         return event
             .split('.')
-            .filter(v => !this.modifier.includes(v))
+            .filter((v) => !this.modifier.includes(v))
             .join('.');
     }
 }
