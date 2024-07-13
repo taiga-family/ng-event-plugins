@@ -9,7 +9,7 @@ export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
         factory: () => {
             const document = inject(DOCUMENT);
 
-            return name =>
+            return (name) =>
                 name === 'body'
                     ? document.body
                     : (document.defaultView as any)[name] ||

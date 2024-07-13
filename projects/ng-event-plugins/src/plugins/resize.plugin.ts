@@ -19,7 +19,7 @@ export class ResizePlugin extends AbstractEventPlugin {
             return () => {};
         }
 
-        const observer = new ResizeObserver(e =>
+        const observer = new ResizeObserver((e) =>
             this.manager.getZone().run(() => handler(e)),
         );
 

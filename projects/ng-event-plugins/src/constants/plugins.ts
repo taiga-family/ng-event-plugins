@@ -19,7 +19,7 @@ const PLUGINS = [
     StopEventPlugin,
 ];
 
-export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map(useClass => ({
+export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map((useClass) => ({
     provide: EVENT_MANAGER_PLUGINS,
     multi: true,
     useClass,
