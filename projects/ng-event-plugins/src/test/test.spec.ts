@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -62,16 +55,20 @@ describe('EventManagers', () => {
             </div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
+        host: {
+            '[$.data-value.attr]': 'test',
+            '($.data-value.attr)': 'test',
+            '[$.tabIndex]': 'test',
+            '($.tabIndex)': 'test',
+            '[$.style.marginTop.%]': 'test',
+            '($.style.marginTop.%)': 'test',
+            '[$.class.active]': 'test',
+            '($.class.active)': 'test',
+            '(document>custom)': 'onCustom()',
+            '(document:click.silent.stop.prevent)': 'onFilteredClicks($event)',
+        },
     })
     class TestComponent {
-        @HostBinding('$.data-value.attr')
-        @HostListener('$.data-value.attr')
-        @HostBinding('$.tabIndex')
-        @HostListener('$.tabIndex')
-        @HostBinding('$.style.marginTop.%')
-        @HostListener('$.style.marginTop.%')
-        @HostBinding('$.class.active')
-        @HostListener('$.class.active')
         public readonly test = asCallable(new BehaviorSubject<number | null>(1));
 
         public flag = false;
@@ -84,12 +81,10 @@ describe('EventManagers', () => {
         public readonly elementRef = inject(ElementRef<HTMLElement>);
 
         @shouldCall((bubbles) => bubbles)
-        @HostListener('document:click.silent.stop.prevent')
         public onFilteredClicks(_bubbles: boolean): void {
             this.flag = true;
         }
 
-        @HostListener('document>custom')
         public onCustom(): void {
             this.custom = true;
         }
@@ -115,7 +110,7 @@ describe('EventManagers', () => {
         document.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.custom).toBe(true);
+        expect(testComponent.custom).toBe(true);
     });
 
     it('clicks are stopped', () => {
@@ -127,8 +122,8 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.onWrapper).not.toHaveBeenCalled();
-        void expect(testComponent.onStoppedClick).toHaveBeenCalled();
+        expect(testComponent.onWrapper).not.toHaveBeenCalled();
+        expect(testComponent.onStoppedClick).toHaveBeenCalled();
     });
 
     it('clicks go through with default prevented', () => {
@@ -140,8 +135,8 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.onPreventedClick).toHaveBeenCalled();
-        void expect(testComponent.onWrapper).toHaveBeenCalled();
+        expect(testComponent.onPreventedClick).toHaveBeenCalled();
+        expect(testComponent.onWrapper).toHaveBeenCalled();
     });
 
     it('clicks are filtered', () => {
@@ -153,7 +148,7 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.flag).toBe(false);
+        expect(testComponent.flag).toBe(false);
     });
 
     it('clicks go through filtered', () => {
@@ -165,7 +160,7 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.flag).toBe(true);
+        expect(testComponent.flag).toBe(true);
     });
 
     it('clicks are captured', () => {
@@ -177,7 +172,7 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.onCaptured).not.toHaveBeenCalled();
+        expect(testComponent.onCaptured).not.toHaveBeenCalled();
     });
 
     it('self listeners not triggered on bubbled events', () => {
@@ -189,7 +184,7 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.onBubbled).not.toHaveBeenCalled();
+        expect(testComponent.onBubbled).not.toHaveBeenCalled();
     });
 
     it('self listeners triggered on events originated on the same element', () => {
@@ -200,7 +195,7 @@ describe('EventManagers', () => {
         element.dispatchEvent(event);
         fixture.detectChanges();
 
-        void expect(testComponent.onBubbled).toHaveBeenCalled();
+        expect(testComponent.onBubbled).toHaveBeenCalled();
     });
 
     describe('shouldCall does not crash without zone', () => {
@@ -218,16 +213,17 @@ describe('EventManagers', () => {
 
             test.test(true);
 
-            void expect(test.flag).toBe(true);
+            expect(test.flag).toBe(true);
         });
 
         it('and doesnt call the method', () => {
             const test = new Test();
 
             test.flag = true;
+
             test.test(false);
 
-            void expect(test.flag).toBe(true);
+            expect(test.flag).toBe(true);
         });
     });
 
@@ -245,9 +241,11 @@ describe('EventManagers', () => {
         const zone = SilentEventPlugin.ngZone;
 
         SilentEventPlugin.ngZone = undefined;
+
         test.test(true);
+
         SilentEventPlugin.ngZone = zone;
 
-        void expect(test.flag).toBe(true);
+        expect(test.flag).toBe(true);
     });
 });

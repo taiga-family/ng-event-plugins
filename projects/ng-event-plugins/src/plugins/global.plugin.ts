@@ -26,7 +26,7 @@ export class GlobalEventPlugin extends AbstractEventPlugin {
     public addEventListener(_: HTMLElement, event: string, handler: Function): Function {
         return this.manager.addEventListener(
             this.handler(event.split('>')[0]),
-            event.split('>')?.[1] || '',
+            event.split('>')?.[1] ?? '',
             handler,
         );
     }
