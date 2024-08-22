@@ -5,8 +5,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -20,6 +18,12 @@ import {shouldCall} from '@taiga-ui/event-plugins';
     templateUrl: './select.template.html',
     styleUrls: ['./select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._open]': 'open',
+        '[class._focused]': 'focused',
+        '(keydown.esc.silent)': 'onEsc($event, open)',
+        '(focusout.silent)': 'onBlur($event.relatedTarget, elementRef.nativeElement)',
+    },
 })
 export class SelectComponent {
     @ViewChild('input')
@@ -29,9 +33,7 @@ export class SelectComponent {
     private readonly options!: QueryList<ElementRef>;
 
     private readonly document = inject(DOCUMENT);
-    private readonly elementRef = inject(ElementRef);
-
-    @HostBinding('class._open')
+    protected readonly elementRef = inject(ElementRef);
     protected open = false;
 
     @Input()
@@ -43,34 +45,30 @@ export class SelectComponent {
     @Output()
     public readonly valueChange = new EventEmitter<string>();
 
-    @HostBinding('class._focused')
     protected get focused(): boolean {
         return this.elementRef.nativeElement.contains(this.document.activeElement);
     }
 
-    // Only react to Esc if dropdown is open
     @shouldCall((_, open) => open)
-    @HostListener('keydown.esc.silent', ['$event', 'open'])
-    protected onEsc(event: KeyboardEvent): void {
+    protected onEsc(event: KeyboardEvent, _open: boolean): void {
         event.stopPropagation();
         this.input.nativeElement.focus();
         this.open = false;
     }
 
-    // Only react to focusout if focus leaves component boundaries
-    @shouldCall((relatedTarget, nativeElement) => !nativeElement.contains(relatedTarget))
-    @HostListener('focusout.silent', ['$event.relatedTarget', 'elementRef.nativeElement'])
-    protected onBlur(): void {
+    @shouldCall(
+        (relatedTarget: Element, nativeElement: HTMLElement) =>
+            !nativeElement.contains(relatedTarget),
+    )
+    protected onBlur(_relatedTarget: Element, _nativeElement: HTMLElement): void {
         this.open = false;
     }
 
-    // Only react to mousemove if focus is required
     @shouldCall((element) => element !== document.activeElement)
     protected onMouseMove(element: HTMLElement): void {
         element.focus();
     }
 
-    // Only react to arrow down if we are not on the last item
     @shouldCall((currentIndex, length) => currentIndex < length - 1)
     protected onArrowDown(currentIndex: number, _length?: number): void {
         this.options
@@ -78,7 +76,6 @@ export class SelectComponent {
             ?.nativeElement.focus();
     }
 
-    // Only react to arrow up if we are not on the first item
     @shouldCall((currentIndex) => !!currentIndex)
     protected onArrowUp(currentIndex: number): void {
         this.options
