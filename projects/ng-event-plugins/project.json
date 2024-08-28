@@ -3,6 +3,7 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/ng-event-plugins/src",
     "projectType": "library",
+    "tags": [],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
@@ -25,6 +26,5 @@
                 "command": "export TAG=\"$(node -p \"require('./package.json')?.version?.includes('alpha') ? 'alpha' : 'latest'\")\" && npm publish --tag $TAG ./dist/ng-event-plugins --access=public --verbose --ignore-scripts || echo 'already published'"
             }
         }
-    },
-    "tags": []
+    }
 }
