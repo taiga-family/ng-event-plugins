@@ -79,11 +79,11 @@
     "devDependencies": {
         "@angular-devkit/build-angular": "16.2.14",
         "@angular-devkit/core": "16.2.14",
-        "@angular/cli": "16.2.14",
+        "@angular/cli": "15.2.10",
         "@angular/common": "16.2.12",
         "@angular/compiler": "16.2.12",
         "@angular/compiler-cli": "16.2.12",
-        "@angular/core": "16.2.12",
+        "@angular/core": "15.2.10",
         "@angular/forms": "16.2.12",
         "@angular/language-service": "16.2.12",
         "@angular/platform-browser": "16.2.12",
@@ -124,7 +124,7 @@
         "ts-node": "10.9.2",
         "tslib": "2.7.0",
         "typescript": "5.0.4",
-        "zone.js": "0.13.3"
+        "zone.js": "0.15.0"
     },
     "engines": {
         "node": ">= 16",
