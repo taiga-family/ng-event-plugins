@@ -123,8 +123,7 @@
         "ts-jest": "29.2.5",
         "ts-node": "10.9.2",
         "tslib": "2.7.0",
-        "typescript": "5.0.4",
-        "zone.js": "0.13.3"
+        "typescript": "5.0.4"
     },
     "engines": {
         "node": ">= 16",
