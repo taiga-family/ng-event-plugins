@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    inject,
+    NgZone,
+} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -72,6 +78,7 @@ describe('EventManagers', () => {
         public readonly test = asCallable(new BehaviorSubject<number | null>(1));
 
         public flag = false;
+        public flagUpdatedInsideZone = false;
         public custom = false;
         public onStoppedClick = jest.fn();
         public onPreventedClick = jest.fn();
@@ -83,6 +90,7 @@ describe('EventManagers', () => {
         @shouldCall((bubbles) => bubbles)
         public onFilteredClicks(_bubbles: boolean): void {
             this.flag = true;
+            this.flagUpdatedInsideZone = NgZone.isInAngularZone();
         }
 
         public onCustom(): void {
@@ -149,6 +157,7 @@ describe('EventManagers', () => {
         fixture.detectChanges();
 
         expect(testComponent.flag).toBe(false);
+        expect(testComponent.flagUpdatedInsideZone).toBe(false);
     });
 
     it('clicks go through filtered', () => {
@@ -161,6 +170,7 @@ describe('EventManagers', () => {
         fixture.detectChanges();
 
         expect(testComponent.flag).toBe(true);
+        expect(testComponent.flagUpdatedInsideZone).toBe(true);
     });
 
     it('clicks are captured', () => {

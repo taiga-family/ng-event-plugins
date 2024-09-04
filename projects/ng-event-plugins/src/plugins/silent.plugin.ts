@@ -14,7 +14,7 @@ export class SilentEventPlugin extends AbstractEventPlugin {
         event: string,
         handler: Function,
     ): Function {
-        SilentEventPlugin.ngZone = this.manager.getZone();
+        SilentEventPlugin.ngZone = SilentEventPlugin.ngZone ?? this.manager.getZone();
 
         return SilentEventPlugin.ngZone.runOutsideAngular(() =>
             this.manager.addEventListener(element, this.unwrap(event), handler),
