@@ -9,18 +9,40 @@ import {SelfEventPlugin} from '../plugins/self.plugin';
 import {SilentEventPlugin} from '../plugins/silent.plugin';
 import {StopEventPlugin} from '../plugins/stop.plugin';
 
-const PLUGINS = [
-    SilentEventPlugin,
-    GlobalEventPlugin,
-    OptionsEventPlugin,
-    PreventEventPlugin,
-    ResizePlugin,
-    SelfEventPlugin,
-    StopEventPlugin,
+export const NG_EVENT_PLUGINS: Provider[] = [
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: SilentEventPlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: GlobalEventPlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: OptionsEventPlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: PreventEventPlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: ResizePlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: SelfEventPlugin,
+    },
+    {
+        provide: EVENT_MANAGER_PLUGINS,
+        multi: true,
+        useClass: StopEventPlugin,
+    },
 ];
-
-export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map((useClass) => ({
-    provide: EVENT_MANAGER_PLUGINS,
-    multi: true,
-    useClass,
-}));
