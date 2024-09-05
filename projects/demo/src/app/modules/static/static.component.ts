@@ -1,8 +1,15 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {AfterViewChecked} from '@angular/core';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Highlight} from 'ngx-highlightjs';
+
+import {PopupComponent} from '../popup/popup.component';
+import {SelectComponent} from '../select/select.component';
 
 @Component({
+    standalone: true,
     selector: 'static',
+    imports: [AsyncPipe, Highlight, NgIf, PopupComponent, SelectComponent],
     templateUrl: './static.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

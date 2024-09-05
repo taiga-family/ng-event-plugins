@@ -11,7 +11,7 @@
                 "baseHref": "/",
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
-                "main": "projects/demo/src/main.browser.ts",
+                "main": "projects/demo/src/main.ts",
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.json",
                 "assets": ["projects/demo/src/favicon.ico"],
@@ -31,14 +31,7 @@
                     "namedChunks": false,
                     "buildOptimizer": true,
                     "statsJson": false,
-                    "progress": false,
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "2mb",
-                            "maximumError": "5mb"
-                        }
-                    ]
+                    "progress": false
                 },
                 "development": {}
             },
@@ -58,63 +51,6 @@
                 }
             },
             "defaultConfiguration": "development"
-        },
-        "server": {
-            "executor": "@angular-devkit/build-angular:server",
-            "options": {
-                "outputPath": "dist/demo/server",
-                "main": "projects/demo/server.ts",
-                "tsConfig": "projects/demo/tsconfig.server.json",
-                "inlineStyleLanguage": "less"
-            },
-            "configurations": {
-                "production": {
-                    "fileReplacements": [
-                        {
-                            "replace": "projects/demo/src/environments/environment.ts",
-                            "with": "projects/demo/src/environments/environment.prod.ts"
-                        }
-                    ]
-                },
-                "development": {
-                    "optimization": false,
-                    "sourceMap": true,
-                    "extractLicenses": false,
-                    "vendorChunk": true
-                }
-            },
-            "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-            "executor": "@nguniversal/executors:ssr-dev-server",
-            "configurations": {
-                "development": {
-                    "browserTarget": "demo:build:development",
-                    "serverTarget": "demo:server:development"
-                },
-                "production": {
-                    "browserTarget": "demo:build:production",
-                    "serverTarget": "demo:server:production"
-                }
-            },
-            "defaultConfiguration": "development"
-        },
-        "prerender": {
-            "executor": "@nguniversal/executors:prerender",
-            "options": {
-                "routes": ["/"]
-            },
-            "configurations": {
-                "production": {
-                    "browserTarget": "demo:build:production",
-                    "serverTarget": "demo:server:production"
-                },
-                "development": {
-                    "browserTarget": "demo:build:development",
-                    "serverTarget": "demo:server:development"
-                }
-            },
-            "defaultConfiguration": "production"
         }
     }
 }

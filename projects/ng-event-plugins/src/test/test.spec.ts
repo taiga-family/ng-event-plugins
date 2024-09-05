@@ -12,6 +12,7 @@ import {asCallable} from '../utils/as-callable';
 
 describe('EventManagers', () => {
     @Component({
+        standalone: true,
         template: `
             <div
                 class="wrapper"
@@ -96,7 +97,7 @@ describe('EventManagers', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: NG_EVENT_PLUGINS,
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
 
         fixture = TestBed.createComponent(TestComponent);

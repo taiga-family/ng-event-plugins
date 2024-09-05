@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -14,7 +14,9 @@ import {
 import {shouldCall} from '@taiga-ui/event-plugins';
 
 @Component({
+    standalone: true,
     selector: 'custom-select',
+    imports: [NgForOf, NgIf],
     templateUrl: './select.template.html',
     styleUrls: ['./select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

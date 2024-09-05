@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
+    standalone: true,
     selector: 'popup',
     templateUrl: './popup.template.html',
     styleUrls: ['./popup.style.less'],
