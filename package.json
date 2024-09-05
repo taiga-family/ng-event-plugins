@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/event-plugins",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "private": true,
     "description": "This is a library for optimizing performance sensitive events and declarative preventDefault and stopPropagation",
     "keywords": [
@@ -99,6 +99,7 @@
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
         "@taiga-ui/browserslist-config": "0.158.0",
+        "@taiga-ui/commitlint-config": "0.158.0",
         "@taiga-ui/eslint-plugin-experience": "0.158.0",
         "@taiga-ui/prettier-config": "0.158.0",
         "@taiga-ui/stylelint-config": "0.158.0",
