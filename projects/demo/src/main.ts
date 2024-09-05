@@ -1,23 +1,29 @@
 import {APP_BASE_HREF, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
+import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
+import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app.routes';
-import {StaticModule} from './modules/static/static.module';
+import {AppComponent} from './app/app.component';
+import {StaticComponent} from './app/modules/static/static.component';
 
-@NgModule({
-    imports: [
-        BrowserModule.withServerTransition({appId: 'demo'}),
-        AppRoutingModule,
-        StaticModule,
-        HighlightModule,
-    ],
-    declarations: [AppComponent],
+bootstrapApplication(AppComponent, {
     providers: [
         NG_EVENT_PLUGINS,
+        provideAnimations(),
+        provideRouter(
+            [
+                {
+                    path: '',
+                    component: StaticComponent,
+                },
+            ],
+            withInMemoryScrolling({
+                scrollPositionRestoration: 'enabled',
+                anchorScrolling: 'enabled',
+            }),
+        ),
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy,
@@ -39,6 +45,4 @@ import {StaticModule} from './modules/static/static.module';
             },
         },
     ],
-    bootstrap: [AppComponent],
-})
-export class AppBrowserModule {}
+}).catch((err: unknown) => console.error(err));

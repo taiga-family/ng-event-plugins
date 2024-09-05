@@ -1,7 +1,12 @@
 <h2>Example</h2>
 <p class="flex">
     <custom-select [items]="items" />
-    <button (click)="onOpened()">Show popup</button>
+    <button
+        type="button"
+        (click)="onOpened()"
+    >
+        Show popup
+    </button>
 </p>
 <blockquote>
     When you mouse over an option in a dropdown — it gets focused. You can then use arrows to move focus to another

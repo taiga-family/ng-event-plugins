@@ -1,15 +1,15 @@
 :host {
-    display: block;
     position: relative;
+    display: block;
     flex: 1;
 
     &::after {
         content: '';
         position: absolute;
-        top: 21px;
-        right: 20px;
-        width: 8px;
-        height: 8px;
+        top: 1.3125rem;
+        right: 1.25rem;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
         transform: rotate(135deg);
         border-top: 2px solid gray;
         border-right: 2px solid gray;
@@ -23,11 +23,11 @@
 }
 
 .input {
-    width: 100%;
+    inline-size: 100%;
     background: #ecf1f7;
     border: 1px solid transparent;
     border-radius: 4px;
-    height: 56px;
+    block-size: 3.5rem;
     padding: 0 16px;
     outline: none;
     box-sizing: border-box;
@@ -35,25 +35,25 @@
 
     :host._focused & {
         background: white;
-        border: 1px solid rgb(97, 104, 113);
+        border: 1px solid rgb(97 104 113);
     }
 }
 
 .dropdown {
     position: absolute;
-    top: 60px;
+    top: 3.75rem;
     left: 0;
     right: 0;
     background: white;
     border: 1px solid #e7e8ea;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 8px 16px -4px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 0.5rem 1rem -0.25rem rgb(51 51 51 / 20%);
 }
 
 .option {
     display: flex;
-    height: 56px;
+    block-size: 3.5rem;
     padding: 0 16px;
     cursor: pointer;
     outline: none;
