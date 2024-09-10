@@ -12,11 +12,13 @@ export class ResizePlugin extends AbstractEventPlugin {
 
     public addEventListener(
         element: HTMLElement,
-        _: string,
+        event: string,
         handler: Function,
     ): Function {
         if (typeof ResizeObserver === 'undefined' || !(element instanceof Element)) {
-            return () => {};
+            element.addEventListener(event, handler as EventListener);
+
+            return () => element.removeEventListener(event, handler as EventListener);
         }
 
         const observer = new ResizeObserver((e) =>
