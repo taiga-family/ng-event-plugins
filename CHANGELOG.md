@@ -1,3 +1,13 @@
+
+
+* fix: `ResizePlugin` add event listener (#497) (66032ba)
+* chore(deps): update nx to v19.7.1 (#496) (8112606)
+* chore(deps): update nx to v19.7.0 (#495) (a60b2fa)
+* chore(deps): update nx to v19.6.6 (#494) (873cd14)
+* chore(deps): update taiga-ui dev infra to v0.160.1 (#492) (5139385)
+* chore(deps): update taiga-ui dev infra to v0.160.0 (#491) (cb5ffe2)
+* chore(deps): update taiga-ui dev infra to v0.159.1 (#490) (e1da2ee)
+
 ## [4.1.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.0.1...vnull) (2024-09-05)
 
 ### Bug Fixes
