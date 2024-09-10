@@ -7,7 +7,7 @@ body {
 }
 
 blockquote {
-    box-shadow: inset 4px 0 whitesmoke;
+    box-shadow: inset 4px 0 #f5f5f5;
     margin: 1em 0;
     padding-left: 1em;
     font-style: italic;
