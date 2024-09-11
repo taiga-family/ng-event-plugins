@@ -1,5 +1,13 @@
 
 
+* feat: drop zone inside resize plugin (#499) (39764da)
+* chore(deps): update taiga-family/ci action to v1.72.0 (#503) (498bc9e)
+* chore(deps): update taiga-ui dev infra to v0.169.1 (#502) (e81e371)
+* chore(deps): update commitlint to v19.5.0 (#501) (98a322a)
+* chore(deps): update taiga-ui dev infra to v0.169.0 (#500) (e1b082f)
+* chore(deps): update taiga-ui dev infra to v0.166.0 (#493) (f78b98b)
+* chore(deps): update nx to v19.7.2 (#498) (1deef53)
+
 * fix: `ResizePlugin` add event listener (#497) (66032ba)
 * chore(deps): update nx to v19.7.1 (#496) (8112606)
 * chore(deps): update nx to v19.7.0 (#495) (a60b2fa)
