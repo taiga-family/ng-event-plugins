@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'chore(release)')"
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.79.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.79.0
-      - uses: taiga-family/ci/actions/setup/node@v1.79.0
-      - uses: taiga-family/ci/actions/run/release-it@v1.79.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.80.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.80.0
+      - uses: taiga-family/ci/actions/setup/node@v1.80.0
+      - uses: taiga-family/ci/actions/run/release-it@v1.80.0
         with:
           ref: ${{ github.ref }}
           mode: ${{ github.event.inputs.mode }}
@@ -37,7 +37,7 @@ jobs:
           echo "name=$(node -p "require('./projects/ng-event-plugins/package.json').name")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.79.0
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.80.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
