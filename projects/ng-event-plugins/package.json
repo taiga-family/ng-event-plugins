@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/event-plugins",
-    "version": "4.2.0",
+    "version": "4.2.1",
     "description": "This is a library for optimizing performance sensitive events and declarative preventDefault and stopPropagation",
     "keywords": [
         "angular",
