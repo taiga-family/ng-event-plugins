@@ -1,5 +1,5 @@
 {
-    "name": "@taiga-ui/event-plugins",
+    "name": "ng-event-plugins",
     "version": "4.2.0",
     "private": true,
     "description": "This is a library for optimizing performance sensitive events and declarative preventDefault and stopPropagation",
@@ -38,7 +38,8 @@
         "test": "nx test ng-event-plugins",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint .",
-        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' !CHANGELOG.md"
+        "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
+        "bump": "npx syncer"
     },
     "commitlint": {
         "extends": [
@@ -96,14 +97,15 @@
         "@nguniversal/express-engine": "16.2.0",
         "@nx/jest": "19.7.4",
         "@nx/workspace": "19.7.4",
-        "@release-it-plugins/workspaces": "4.2.0",
-        "@release-it/conventional-changelog": "8.0.2",
-        "@taiga-ui/browserslist-config": "0.201.0",
-        "@taiga-ui/commitlint-config": "0.201.0",
-        "@taiga-ui/eslint-plugin-experience": "0.201.0",
-        "@taiga-ui/prettier-config": "0.201.0",
-        "@taiga-ui/stylelint-config": "0.201.0",
-        "@taiga-ui/tsconfig": "0.201.0",
+        "@taiga-ui/auto-changelog-config": "0.202.0",
+        "@taiga-ui/browserslist-config": "0.202.0",
+        "@taiga-ui/commitlint-config": "0.202.0",
+        "@taiga-ui/eslint-plugin-experience": "0.202.0",
+        "@taiga-ui/prettier-config": "0.202.0",
+        "@taiga-ui/release-it-config": "0.202.0",
+        "@taiga-ui/stylelint-config": "0.202.0",
+        "@taiga-ui/syncer": "0.202.0",
+        "@taiga-ui/tsconfig": "0.202.0",
         "@types/estree": "1.0.6",
         "@types/express": "4.17.21",
         "@types/jasmine": "5.1.4",
@@ -119,20 +121,26 @@
         "ngx-highlightjs": "10.0.0",
         "nx": "19.7.4",
         "raw-loader": "4.0.2",
-        "release-it": "17.6.0",
         "rxjs": "7.5.7",
         "ts-jest": "29.2.5",
         "ts-node": "10.9.2",
         "tslib": "2.7.0",
         "typescript": "5.0.4"
     },
-    "engines": {
-        "node": ">= 16",
-        "npm": ">= 8"
-    },
     "authors": [
         "Alex Inkin <a.inkin@tinkoff.ru>",
         "Roman Sedov <r.sedov@tinkoff.ru>"
     ],
+    "syncer": {
+        "includePaths": [
+            "./projects",
+            "./package-lock.json"
+        ],
+        "matchPackageNames": [
+            "@taiga-ui/event-plugins",
+            "ng-event-plugins"
+        ],
+        "ignorePackageNames": []
+    },
     "web-types": "./projects/ng-event-plugins/web-types.json"
 }
