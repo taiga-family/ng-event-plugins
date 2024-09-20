@@ -3,28 +3,40 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/ng-event-plugins/src",
     "projectType": "library",
-    "tags": [],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.json",
-                "project": "projects/ng-event-plugins/ng-package.json"
+                "project": "projects/{projectName}/ng-package.json"
             }
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/ng-event-plugins"],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "jest.config.ts",
                 "passWithNoTests": true
             }
         },
+        "prepublish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cp ./LICENSE ./README.md ./dist/{projectName}"
+            }
+        },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "export TAG=\"$(node -p \"require('./package.json')?.version?.includes('alpha') ? 'alpha' : 'latest'\")\" && npm publish --tag $TAG ./dist/ng-event-plugins --access=public --verbose --ignore-scripts || echo 'already published'"
-            }
+                "command": "npm publish ./dist/{projectName} --ignore-scripts"
+            },
+            "dependsOn": [
+                {
+                    "target": "prepublish",
+                    "params": "ignore",
+                    "dependencies": false
+                }
+            ]
         }
     }
 }
