@@ -15,15 +15,17 @@ export class OptionsEventPlugin extends AbstractEventPlugin {
         event: string,
         handler: EventListener,
     ): Function {
-        const unwrap = this.unwrap(event);
-        const capture = event.includes('.capture');
-
-        element.addEventListener(unwrap, handler, {
-            capture,
+        element.addEventListener(this.unwrap(event), handler, {
             once: event.includes('.once'),
             passive: event.includes('.passive'),
+            capture: event.includes('.capture'),
         });
 
-        return () => element.removeEventListener(unwrap, handler, {capture});
+        return () =>
+            element.removeEventListener(
+                this.unwrap(event),
+                handler,
+                event.includes('.capture'),
+            );
     }
 }
