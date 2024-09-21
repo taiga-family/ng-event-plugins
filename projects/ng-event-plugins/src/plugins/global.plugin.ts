@@ -1,10 +1,11 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable, InjectionToken} from '@angular/core';
 
 import {AbstractEventPlugin} from './abstract.plugin';
 
 export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
-    '[GLOBAL_HANDLER]: Global event target handler',
+    ngDevMode ? '[GLOBAL_HANDLER]: Global event target handler' : '',
     {
         factory: () => {
             const document = inject(DOCUMENT);
