@@ -1,7 +1,16 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+[`conventional commits`](https://www.conventionalcommits.org/) guidelines.
+
+### [4.2.2](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.1...v4.2.2) (2024-09-23)
+
+### 🚀 Features
+
+- reuse some variables in plugin (#542)
+  [(15f7438)](https://github.com/taiga-family/ng-event-plugins/commit/15f74383cb48abbaa047e7bf46cf9630831445f7)
+- decrease bundle size in prod mode (#541)
+  [(5bc7a18)](https://github.com/taiga-family/ng-event-plugins/commit/5bc7a1896ec49aba0e84de53ae17794a92ddc068)
 
 ### [4.2.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.0...v4.2.1) (2024-09-20)
 
