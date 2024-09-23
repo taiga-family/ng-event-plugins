@@ -39,8 +39,7 @@
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint .",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
-        "prebump": "npx syncer && npx nx build ng-event-plugins",
-        "bump": "npx nx publish ng-event-plugins"
+        "release": "npx syncer && npx nx publish ng-event-plugins"
     },
     "commitlint": {
         "extends": [
