@@ -107,7 +107,7 @@
         "@taiga-ui/syncer": "0.219.0",
         "@taiga-ui/tsconfig": "0.219.0",
         "@types/estree": "1.0.6",
-        "@types/express": "4.17.21",
+        "@types/express": "5.0.0",
         "@types/jasmine": "5.1.4",
         "@types/jasminewd2": "2.0.13",
         "@types/node": "22.7.1",
