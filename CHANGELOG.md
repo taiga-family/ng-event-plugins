@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file. See
 [`conventional commits`](https://www.conventionalcommits.org/) guidelines.
 
+### [4.2.4](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.3...v4.2.4) (2024-09-27)
+
 ### [4.2.3](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.2...v4.2.3) (2024-09-23)
 
 ### [4.2.2](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.1...v4.2.2) (2024-09-23)
