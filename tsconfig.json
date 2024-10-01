@@ -8,5 +8,6 @@
         "paths": {
             "@taiga-ui/event-plugins": ["projects/ng-event-plugins/src"]
         }
-    }
+    },
+    "exclude": ["**/*.mjs"]
 }

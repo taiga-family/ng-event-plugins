@@ -88,6 +88,13 @@ onPinchZoom({ scale }: VisualViewport) {
 }
 ```
 
+5. iOS currently doesn't support the `contextmenu` event. Instead, you can use a custom `longtap` event. This event
+   captures the `contextmenu` event on non-iOS devices and simulates similar behavior on iOS devices.
+
+```html
+<div (longtap)="showContextMenu($event.detail.clientX, $event.detail.clientY)">Div with context menu</div>
+```
+
 > All examples above work the same when used with `@HostListener` and `CustomEvent`
 
 ### Important notes
