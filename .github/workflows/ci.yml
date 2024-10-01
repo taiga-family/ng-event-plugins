@@ -1,4 +1,4 @@
-name: Web APIs CI
+name: CI
 on:
   pull_request:
   push:
@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.87.8
-      - uses: taiga-family/ci/actions/setup/node@v1.87.8
+        with:
+          persist-credentials: false
+      - uses: taiga-family/ci/actions/setup/variables@v1.89.0
+      - uses: taiga-family/ci/actions/setup/node@v1.89.0
       - run: |
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
               npm run stylelint -- --fix
@@ -28,10 +30,10 @@ jobs:
 
       - uses: codecov/codecov-action@v4.6.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/auto/push@v1.87.8
+      - uses: taiga-family/ci/actions/auto/push@v1.89.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
-  group: ci-${{ github.head_ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
