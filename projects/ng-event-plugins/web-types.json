@@ -43,7 +43,7 @@
                         },
                         {
                             "name": "prevent",
-                            "description": "Call .preventDefault() on the event"
+                            "description": "Call `.preventDefault()` on the event"
                         },
                         {
                             "name": "self",
@@ -55,7 +55,7 @@
                         },
                         {
                             "name": "stop",
-                            "description": "Call .stopPropagation() on the event"
+                            "description": "Call `.stopPropagation()` on the event"
                         }
                     ]
                 }
