@@ -1,11 +1,6 @@
 import type {EventManager} from '@angular/platform-browser';
 
-// TODO: Type is exposed since Angular 17, remove when updated
-type EventManagerArg = ConstructorParameters<typeof EventManager>[0][0];
-
-type EventManagerPlugin = {
-    [K in keyof EventManagerArg]: EventManagerArg[K];
-};
+import type {EventManagerPlugin} from '../types/event-manager-plugin';
 
 export abstract class AbstractEventPlugin implements EventManagerPlugin {
     protected abstract readonly modifier: string;
