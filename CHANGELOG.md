@@ -1,3 +1,10 @@
+### [4.3.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.4...v4.3.0) (2024-10-09)
+
+### 🚀 Features
+
+- add longtap event (#574)
+  [(17881f2)](https://github.com/taiga-family/ng-event-plugins/commit/17881f26641415f2c2ffb68a151e12587aa92d64)
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See
