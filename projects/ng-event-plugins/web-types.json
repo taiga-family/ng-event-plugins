@@ -8,6 +8,18 @@
         "js": {
             "ng-custom-events": [
                 {
+                    "name": "Longtap event",
+                    "description": "An event triggered by a long press on a user interface element. This event can be used to implement additional actions or display a context menu that opens upon a long press.",
+                    "priority": "normal",
+                    "pattern": {
+                        "template": ["longtap"]
+                    },
+                    "type": {
+                        "name": "LongtapEvent",
+                        "module": "./src/types/longtap.event.ts"
+                    }
+                },
+                {
                     "name": "Custom modifiers for declarative events handling",
                     "priority": "normal",
                     "pattern": {
