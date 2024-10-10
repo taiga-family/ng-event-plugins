@@ -1,10 +1,3 @@
-import {isApple} from './is-apple';
-
-const IOS_REG_EXP = /ipad|iphone|ipod/;
-
-export function isIos(navigator: Navigator): boolean {
-    return (
-        IOS_REG_EXP.test(navigator.userAgent.toLowerCase()) ||
-        (isApple(navigator) && navigator.maxTouchPoints > 1)
-    );
-}
+export const isIos = ({userAgent, maxTouchPoints}: Navigator): boolean =>
+    /ipad|iphone|ipod|mac/i.test(userAgent) ||
+    (/^((?!chrome|android).)*safari/i.test(userAgent) && maxTouchPoints > 1);
