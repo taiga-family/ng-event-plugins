@@ -1,3 +1,10 @@
+### [4.3.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.3.0...v4.3.1) (2024-10-11)
+
+### 🚀 Features
+
+- copy-paste behaviour from ng-web-apis platform (#595)
+  [(8396077)](https://github.com/taiga-family/ng-event-plugins/commit/83960771d0731445c89369631c0dcba5c91e83b1)
+
 ### [4.3.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.2.4...v4.3.0) (2024-10-09)
 
 ### 🚀 Features
