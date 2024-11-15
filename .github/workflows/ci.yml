@@ -28,7 +28,7 @@ jobs:
       - run: npm run build:demo
       - run: npm run test
 
-      - uses: codecov/codecov-action@v5.0.0
+      - uses: codecov/codecov-action@v5.0.1
         continue-on-error: true
       - uses: taiga-family/ci/actions/auto/push@v1.96.0
         with:
