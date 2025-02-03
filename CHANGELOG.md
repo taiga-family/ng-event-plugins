@@ -1,3 +1,10 @@
+### [4.4.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.3.1...v4.4.0) (2025-02-03)
+
+### 🚀 Features
+
+- rename `silent` to `zoneless` (#734)
+  [(17962c9)](https://github.com/taiga-family/ng-event-plugins/commit/17962c9232d69b6c97fbd67bd7825bf7541364a8)
+
 ### [4.3.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.3.0...v4.3.1) (2024-10-11)
 
 ### 🚀 Features
