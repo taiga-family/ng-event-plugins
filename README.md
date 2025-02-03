@@ -24,7 +24,7 @@ _stopPropagation()_.
    - `.stop` to call stopPropagation() on event
    - `.prevent` to call preventDefault() on event
    - `.self` to skip bubbled events
-   - `.silent` to call event handler outside Angular's `NgZone`
+   - `.zoneless` to call event handler outside Angular's `NgZone`
    - `.capture` to listen to events in
      [capture phase](https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase)
    - `.passive` to add
@@ -43,7 +43,7 @@ _stopPropagation()_.
    ```
 
    ```html
-   <div (mousemove.silent)="onMouseMove()">Callbacks to mousemove will not trigger change detection</div>
+   <div (mousemove.zoneless)="onMouseMove()">Callbacks to mousemove will not trigger change detection</div>
    ```
 
    ```html
@@ -56,7 +56,7 @@ _stopPropagation()_.
    function as argument:
 
 ```html
-<div (scroll.silent)="onScroll($event.currentTarget)">
+<div (scroll.zoneless)="onScroll($event.currentTarget)">
   Scrolling this DIV will only trigger change detection and onScroll callback if it is scrolled to bottom
 </div>
 ```
@@ -104,7 +104,7 @@ onPinchZoom({ scale }: VisualViewport) {
 
 - Decorated method will be called and change detection triggered if predicate returns `true`.
 
-- `.silent` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or `keydown.arrowDown`
+- `.zoneless` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or `keydown.arrowDown`
   since Angular re-enters `NgZone` inside internal handlers.
 
 ## Demo

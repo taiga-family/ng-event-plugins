@@ -23,8 +23,8 @@ import {shouldCall} from '@taiga-ui/event-plugins';
     host: {
         '[class._open]': 'open',
         '[class._focused]': 'focused',
-        '(keydown.esc.silent)': 'onEsc($event, open)',
-        '(focusout.silent)': 'onBlur($event.relatedTarget, elementRef.nativeElement)',
+        '(keydown.esc.zoneless)': 'onEsc($event, open)',
+        '(focusout.zoneless)': 'onBlur($event.relatedTarget, elementRef.nativeElement)',
     },
 })
 export class SelectComponent {

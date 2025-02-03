@@ -18,9 +18,9 @@
         tabindex="-1"
         class="option"
         (click)="onSelect(item)"
-        (keydown.arrowDown.silent.prevent)="onArrowDown(index, items.length)"
-        (keydown.arrowUp.silent.prevent)="onArrowUp(index)"
-        (mousemove.silent)="onMouseMove(option)"
+        (keydown.arrowDown.zoneless.prevent)="onArrowDown(index, items.length)"
+        (keydown.arrowUp.zoneless.prevent)="onArrowUp(index)"
+        (mousemove.zoneless)="onMouseMove(option)"
     >
         {{ item }}
     </div>
