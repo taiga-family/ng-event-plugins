@@ -104,8 +104,8 @@ onPinchZoom({ scale }: VisualViewport) {
 
 - Decorated method will be called and change detection triggered if predicate returns `true`.
 
-- `.zoneless` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or `keydown.arrowDown`
-  since Angular re-enters `NgZone` inside internal handlers.
+- `.zoneless` modifier will not work with built-in keyboard pseudo-events, such as `keydown.enter` or
+  `keydown.arrowDown` since Angular re-enters `NgZone` inside internal handlers.
 
 ## Demo
 
