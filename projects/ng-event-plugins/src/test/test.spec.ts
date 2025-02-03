@@ -31,7 +31,7 @@ describe('EventManagers', () => {
                 <div
                     id="filtered-clicks"
                     class="element"
-                    (click.silent)="onFilteredClicks($event.bubbles)"
+                    (click.zoneless)="onFilteredClicks($event.bubbles)"
                 ></div>
             </div>
             <div
@@ -66,7 +66,7 @@ describe('EventManagers', () => {
             '[$.class.active]': 'test',
             '($.class.active)': 'test',
             '(document>custom)': 'onCustom()',
-            '(document:click.silent.stop.prevent)': 'onFilteredClicks($event)',
+            '(document:click.zoneless.stop.prevent)': 'onFilteredClicks($event)',
         },
     })
     class TestComponent {

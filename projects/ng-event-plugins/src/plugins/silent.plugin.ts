@@ -3,11 +3,14 @@ import {Injectable} from '@angular/core';
 
 import {AbstractEventPlugin} from './abstract.plugin';
 
+/**
+ * @deprecated: drop in v5.x
+ */
 @Injectable()
 export class SilentEventPlugin extends AbstractEventPlugin {
     public static ngZone?: NgZone;
 
-    public readonly modifier = '.silent';
+    public readonly modifier: string = '.silent';
 
     public addEventListener(
         element: HTMLElement,

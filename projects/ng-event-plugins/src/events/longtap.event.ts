@@ -60,7 +60,7 @@ export class LongtapEventPlugin implements EventManagerPlugin {
 
         const removeTouchstartListener = this.manager.addEventListener(
             element,
-            'touchstart.silent.passive',
+            'touchstart.zoneless.passive',
             ({touches}: TouchEvent) => {
                 const touch = touches[0];
 
@@ -81,7 +81,7 @@ export class LongtapEventPlugin implements EventManagerPlugin {
 
         const removeTouchmoveListener = this.manager.addEventListener(
             element,
-            'touchmove.silent.passive',
+            'touchmove.zoneless.passive',
             ({touches}: TouchEvent) => {
                 const touch = touches[0];
 
@@ -106,13 +106,13 @@ export class LongtapEventPlugin implements EventManagerPlugin {
 
         const removeTouchcancelListener = this.manager.addEventListener(
             element,
-            'touchcancel.silent.passive',
+            'touchcancel.zoneless.passive',
             reset,
         );
 
         const removeTouchendListener = this.manager.addEventListener(
             element,
-            'touchend.silent.passive',
+            'touchend.zoneless.passive',
             reset,
         );
 
