@@ -1,3 +1,10 @@
+### [4.4.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.4.0...v4.4.1) (2025-02-24)
+
+### 🐞 Bug Fixes
+
+- add zoneless modifiers to web types (#756)
+  [(b0cfd41)](https://github.com/taiga-family/ng-event-plugins/commit/b0cfd4168263402475b4084f9b7fbd0c15ce1cd3)
+
 ### [4.4.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.3.1...v4.4.0) (2025-02-03)
 
 ### 🚀 Features
