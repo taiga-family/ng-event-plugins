@@ -48,5 +48,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
+codecov*
+!codecov.yml
 .nx
