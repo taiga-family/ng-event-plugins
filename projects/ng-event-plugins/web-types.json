@@ -66,6 +66,10 @@
                             "description": "Run event handler outside NgZone to not trigger change detection"
                         },
                         {
+                            "name": "zoneless",
+                            "description": "Run event handler outside NgZone to not trigger change detection"
+                        },
+                        {
                             "name": "stop",
                             "description": "Call `.stopPropagation()` on the event"
                         }
