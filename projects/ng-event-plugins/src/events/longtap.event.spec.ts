@@ -3,8 +3,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {jest} from '@jest/globals';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
+import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 import {LongtapEvent} from '../types/longtap.event';
 import {isIos} from '../utils/is-ios';
@@ -45,7 +45,7 @@ describe('LongtapEventPlugin', () => {
         jest.useFakeTimers();
 
         TestBed.configureTestingModule({
-            providers: NG_EVENT_PLUGINS,
+            providers: [provideEventPlugins()],
         });
     });
 

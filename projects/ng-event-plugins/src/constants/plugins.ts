@@ -23,8 +23,15 @@ const PLUGINS = [
     LongtapEventPlugin,
 ];
 
+/**
+ * @deprecated: use {@link provideEventPlugins}
+ */
 export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map((useClass) => ({
     provide: EVENT_MANAGER_PLUGINS,
     multi: true,
     useClass,
 }));
+
+export function provideEventPlugins(): Provider[] {
+    return NG_EVENT_PLUGINS;
+}
