@@ -1,3 +1,10 @@
+### [4.5.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.4.1...v4.5.0) (2025-03-25)
+
+### 🚀 Features
+
+- add `provideEventPlugins` helper (#798)
+  [(e65bdcf)](https://github.com/taiga-family/ng-event-plugins/commit/e65bdcf83a38af0222def2d7d7629fac0f0ce5d9)
+
 ### [4.4.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.4.0...v4.4.1) (2025-02-24)
 
 ### 🐞 Bug Fixes
