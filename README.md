@@ -31,7 +31,8 @@ _stopPropagation()_.
      [passive event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners)
    - `.once` to remove event listener after first callback
    - `resize` to watch for elements changing dimensions with `ResizeObserver`
-   - `.debounce-<delay>` to delay the execution of the event handler for a specified time (ms or s)
+   - `.debounce~<delay>` to delay the execution of the event handler for a specified time (ms or s)
+   - `.throttle~<delay>` to limits how often the event handler can run for a specified time (ms or s)
 
    For example:
 
@@ -54,8 +55,13 @@ _stopPropagation()_.
    ```
 
    ```html
-   <button (click.debounce-300ms)="onClick()">Debounced Click</button>
-   <button (input.debounce-2s)="onInput()">Debounced Input</button>
+   <button (click.debounce~300ms)="onClick()">Debounced Click</button>
+   <button (click.debounce~2s)="onClick()">Debounced Click</button>
+   ```
+
+   ```html
+   <button (click.throttle~300ms)="onClick()">Throttled Click</button>
+   <button (click.throttle~2s)="onClick()">Throttled Click</button>
    ```
 
 3. You can also re-enter `NgZone` and trigger change detection, using `@shouldCall` decorator that takes a predicate

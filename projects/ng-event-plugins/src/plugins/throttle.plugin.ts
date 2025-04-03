@@ -1,7 +1,7 @@
 import {TimedEventPlugin} from './timed-event.plugin';
 
-export class DebounceEventPlugin extends TimedEventPlugin {
-    protected override readonly regExp = /\.debounce~(?<time>\d+)(?<units>ms|s)/;
+export class ThrottleEventPlugin extends TimedEventPlugin {
+    protected override readonly regExp = /\.throttle~(?<time>\d+)(?<units>ms|s)/;
 
     public override addEventListener(
         element: HTMLElement,
@@ -14,10 +14,14 @@ export class DebounceEventPlugin extends TimedEventPlugin {
             element,
             this.unwrap(eventName),
             (event: Event): void => {
-                clearTimeout(timeout);
+                if (timeout !== undefined) {
+                    return;
+                }
+
+                handler(event);
 
                 timeout = setTimeout(() => {
-                    handler(event);
+                    timeout = undefined;
                 }, this.getDelay(eventName));
             },
         );
