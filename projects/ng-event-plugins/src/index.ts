@@ -1,5 +1,6 @@
 export * from './constants/plugins';
 export * from './decorators/should-call';
+export * from './plugins/debounce.plugin';
 export * from './plugins/global.plugin';
 export * from './plugins/options.plugin';
 export * from './plugins/prevent.plugin';
