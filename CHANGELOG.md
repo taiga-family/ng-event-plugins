@@ -1,3 +1,12 @@
+### [4.5.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.5.0...v4.5.1) (2025-04-03)
+
+### 🚀 Features
+
+- add throttle modifier (#812)
+  [(96415f5)](https://github.com/taiga-family/ng-event-plugins/commit/96415f5b61985dfa30dc4a8dbee654ce89c3a5a9)
+- add debounce modifier (#811)
+  [(8253269)](https://github.com/taiga-family/ng-event-plugins/commit/8253269bf8caf6e20a54caed61460042966b3440)
+
 ### [4.5.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.4.1...v4.5.0) (2025-03-25)
 
 ### 🚀 Features
