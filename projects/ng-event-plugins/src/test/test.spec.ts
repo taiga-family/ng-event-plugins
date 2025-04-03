@@ -56,11 +56,19 @@ describe('EventManagers', () => {
             </div>
             <div
                 id="debounce-clicks-ms"
-                (click.debounce-300ms)="onDebounceClicks($event)"
+                (click.debounce~300ms)="onDebounceClicks($event)"
             ></div>
             <div
                 id="debounce-clicks-s"
-                (click.debounce-3s)="onDebounceClicks($event)"
+                (click.debounce~3s)="onDebounceClicks($event)"
+            ></div>
+            <div
+                id="throttle-clicks-ms"
+                (click.throttle~300ms)="onThrottleClicks($event)"
+            ></div>
+            <div
+                id="throttle-clicks-s"
+                (click.throttle~3s)="onThrottleClicks($event)"
             ></div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -88,6 +96,7 @@ describe('EventManagers', () => {
         public readonly onCaptured = jest.fn();
         public readonly onBubbled = jest.fn();
         public readonly onDebounceClicks = jest.fn<(event: MouseEvent) => void>();
+        public readonly onThrottleClicks = jest.fn<(event: MouseEvent) => void>();
         public readonly elementRef = inject(ElementRef<HTMLElement>);
 
         @shouldCall((bubbles) => bubbles)
@@ -238,6 +247,26 @@ describe('EventManagers', () => {
         });
     });
 
+    it('clicks are not debounced after destroy (ms)', () => {
+        const event = new Event('click', {bubbles: true});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-ms'),
+        ).nativeElement;
+
+        element.dispatchEvent(event);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(299);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        fixture.destroy();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+    });
+
     it('clicks are debounced (s)', () => {
         const event = new Event('click', {bubbles: true});
         const element = fixture.debugElement.query(
@@ -286,6 +315,96 @@ describe('EventManagers', () => {
         expect(testComponent.onDebounceClicks).toHaveBeenCalledWith(secondEvent);
         expect(testComponent.onDebounceClicks.mock.calls[0]?.[0].detail).toEqual({
             data: 2,
+        });
+    });
+
+    it('clicks are not debounced after destroy (s)', () => {
+        const event = new Event('click', {bubbles: true});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-s'),
+        ).nativeElement;
+
+        element.dispatchEvent(event);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(2999);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        fixture.destroy();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+    });
+
+    it('multiple clicks are throttled (ms)', () => {
+        const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
+        const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+        const thirdEvent = new CustomEvent('click', {bubbles: true, detail: {data: 3}});
+        const element = fixture.debugElement.query(
+            By.css('#throttle-clicks-ms'),
+        ).nativeElement;
+
+        element.dispatchEvent(firstEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).toHaveBeenCalledWith(firstEvent);
+        expect(testComponent.onThrottleClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 1,
+        });
+
+        testComponent.onThrottleClicks.mockClear();
+
+        jest.advanceTimersByTime(299);
+
+        element.dispatchEvent(secondEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+        element.dispatchEvent(thirdEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).toHaveBeenCalledWith(thirdEvent);
+        expect(testComponent.onThrottleClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 3,
+        });
+    });
+
+    it('multiple clicks are throttled (s)', () => {
+        const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
+        const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+        const thirdEvent = new CustomEvent('click', {bubbles: true, detail: {data: 3}});
+        const element = fixture.debugElement.query(
+            By.css('#throttle-clicks-s'),
+        ).nativeElement;
+
+        element.dispatchEvent(firstEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).toHaveBeenCalledWith(firstEvent);
+        expect(testComponent.onThrottleClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 1,
+        });
+
+        testComponent.onThrottleClicks.mockClear();
+
+        jest.advanceTimersByTime(2999);
+
+        element.dispatchEvent(secondEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+        element.dispatchEvent(thirdEvent);
+        fixture.detectChanges();
+
+        expect(testComponent.onThrottleClicks).toHaveBeenCalledWith(thirdEvent);
+        expect(testComponent.onThrottleClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 3,
         });
     });
 

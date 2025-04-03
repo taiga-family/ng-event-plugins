@@ -74,14 +74,24 @@
                             "description": "Call `.stopPropagation()` on the event"
                         },
                         {
-                            "name": "debounce-<delay>ms",
-                            "description": "Event with a 'debounce' modifier. The delay value (in milliseconds) specifies how long to wait before triggering the event handler.\n\n**Note:** This modifier should only be applied once.",
-                            "pattern": "debounce-\\d+ms"
+                            "name": "debounce~<delay>ms",
+                            "description": "Triggers the handler after no events have occurred for every <delay> milliseconds.",
+                            "pattern": "debounce~\\d+ms"
                         },
                         {
-                            "name": "debounce-<delay>s",
-                            "description": "Event with a 'debounce' modifier. The delay value (in seconds) specifies how long to wait before triggering the event handler.\n\n**Note:** This modifier should only be applied once.",
-                            "pattern": "debounce-\\d+s"
+                            "name": "debounce~<delay>s",
+                            "description": "Triggers the handler after no events have occurred for every <delay> seconds.",
+                            "pattern": "debounce~\\d+s"
+                        },
+                        {
+                            "name": "throttle~<delay>ms",
+                            "description": "Triggers the handler at most once every <delay> milliseconds.",
+                            "pattern": "throttle~\\d+ms"
+                        },
+                        {
+                            "name": "throttle~<delay>s",
+                            "description": "Triggers the handler at most once every <delay> seconds.",
+                            "pattern": "throttle~\\d+s"
                         }
                     ]
                 }
