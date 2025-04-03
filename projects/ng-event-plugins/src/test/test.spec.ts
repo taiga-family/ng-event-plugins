@@ -54,6 +54,14 @@ describe('EventManagers', () => {
                     (click)="(0)"
                 ></div>
             </div>
+            <div
+                id="debounce-clicks-ms"
+                (click.debounce-300ms)="onDebounceClicks($event)"
+            ></div>
+            <div
+                id="debounce-clicks-s"
+                (click.debounce-3s)="onDebounceClicks($event)"
+            ></div>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
         host: {
@@ -74,11 +82,12 @@ describe('EventManagers', () => {
 
         public flag = false;
         public custom = false;
-        public onStoppedClick = jest.fn();
-        public onPreventedClick = jest.fn();
-        public onWrapper = jest.fn();
-        public onCaptured = jest.fn();
-        public onBubbled = jest.fn();
+        public readonly onStoppedClick = jest.fn();
+        public readonly onPreventedClick = jest.fn();
+        public readonly onWrapper = jest.fn();
+        public readonly onCaptured = jest.fn();
+        public readonly onBubbled = jest.fn();
+        public readonly onDebounceClicks = jest.fn<(event: MouseEvent) => void>();
         public readonly elementRef = inject(ElementRef<HTMLElement>);
 
         @shouldCall((bubbles) => bubbles)
@@ -95,6 +104,8 @@ describe('EventManagers', () => {
     let testComponent: TestComponent;
 
     beforeEach(() => {
+        jest.useFakeTimers();
+
         TestBed.configureTestingModule({
             providers: [provideEventPlugins()],
             imports: [TestComponent],
@@ -174,6 +185,108 @@ describe('EventManagers', () => {
         fixture.detectChanges();
 
         expect(testComponent.onCaptured).not.toHaveBeenCalled();
+    });
+
+    it('clicks are debounced (ms)', () => {
+        const event = new Event('click', {bubbles: true});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-ms'),
+        ).nativeElement;
+
+        element.dispatchEvent(event);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(299);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).toHaveBeenCalledWith(event);
+    });
+
+    it('multiple clicks are debounced (ms)', () => {
+        const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
+        const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-ms'),
+        ).nativeElement;
+
+        element.dispatchEvent(firstEvent);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(299);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        element.dispatchEvent(secondEvent);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(298);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).toHaveBeenCalledWith(secondEvent);
+        expect(testComponent.onDebounceClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 2,
+        });
+    });
+
+    it('clicks are debounced (s)', () => {
+        const event = new Event('click', {bubbles: true});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-s'),
+        ).nativeElement;
+
+        element.dispatchEvent(event);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(2999);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).toHaveBeenCalledWith(event);
+    });
+
+    it('multiple clicks are debounced (s)', () => {
+        const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
+        const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+        const element = fixture.debugElement.query(
+            By.css('#debounce-clicks-s'),
+        ).nativeElement;
+
+        element.dispatchEvent(firstEvent);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(2999);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        element.dispatchEvent(secondEvent);
+        fixture.detectChanges();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(2998);
+
+        expect(testComponent.onDebounceClicks).not.toHaveBeenCalled();
+
+        jest.advanceTimersByTime(1);
+
+        expect(testComponent.onDebounceClicks).toHaveBeenCalledWith(secondEvent);
+        expect(testComponent.onDebounceClicks.mock.calls[0]?.[0].detail).toEqual({
+            data: 2,
+        });
     });
 
     it('self listeners not triggered on bubbled events', () => {

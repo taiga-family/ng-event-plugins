@@ -2,6 +2,7 @@ import type {Provider} from '@angular/core';
 import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 
 import {LongtapEventPlugin} from '../events/longtap.event';
+import {DebounceEventPlugin} from '../plugins/debounce.plugin';
 import {GlobalEventPlugin} from '../plugins/global.plugin';
 import {OptionsEventPlugin} from '../plugins/options.plugin';
 import {PreventEventPlugin} from '../plugins/prevent.plugin';
@@ -21,6 +22,7 @@ const PLUGINS = [
     SelfEventPlugin,
     StopEventPlugin,
     LongtapEventPlugin,
+    DebounceEventPlugin,
 ];
 
 /**
