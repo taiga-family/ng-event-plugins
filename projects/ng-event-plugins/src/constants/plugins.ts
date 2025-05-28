@@ -16,11 +16,11 @@ import {ZonelessPlugin} from '../plugins/zoneless.plugin';
 const PLUGINS = [
     SilentEventPlugin,
     ZonelessPlugin,
+    SelfEventPlugin,
     GlobalEventPlugin,
     OptionsEventPlugin,
     PreventEventPlugin,
     ResizePlugin,
-    SelfEventPlugin,
     StopEventPlugin,
     LongtapEventPlugin,
     DebounceEventPlugin,
