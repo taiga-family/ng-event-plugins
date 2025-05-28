@@ -1,6 +1,6 @@
 {
     "name": "ng-event-plugins",
-    "version": "4.5.1",
+    "version": "4.6.0",
     "private": true,
     "description": "This is a library for optimizing performance sensitive events and declarative preventDefault and stopPropagation",
     "keywords": [

@@ -1,3 +1,12 @@
+### [4.6.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.5.1...v4.6.0) (2025-05-28)
+
+### 🚀 Features
+
+- **ng-event-plugins**: change plugins order to allow .self.prevent/.self.stop combinations
+  [(4868ee7)](https://github.com/taiga-family/ng-event-plugins/commit/4868ee77b3ba069f416df452d17ea16fd13208ad)
+- **ng-event-plugins**: change plugins order to allow .self.prevent/.self.stop combinations
+  [(f97c5e3)](https://github.com/taiga-family/ng-event-plugins/commit/f97c5e3d2f0d5661bad0d809facf16cd79e43acd)
+
 ### [4.5.1](https://github.com/taiga-family/ng-event-plugins/compare/v4.5.0...v4.5.1) (2025-04-03)
 
 ### 🚀 Features
