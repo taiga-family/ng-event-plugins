@@ -20,7 +20,6 @@ _stopPropagation()_.
    ```
 
 2. Use new modifiers for events in templates and in `@HostListener`:
-
    - `.stop` to call stopPropagation() on event
    - `.prevent` to call preventDefault() on event
    - `.self` to skip bubbled events
