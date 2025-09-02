@@ -1,3 +1,10 @@
+### [4.7.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.6.0...v4.7.0) (2025-09-02)
+
+### 🚀 Features
+
+- export the majority of plugins by default (#967)
+  [(d322c98)](https://github.com/taiga-family/ng-event-plugins/commit/d322c981574435444863c9df0a99937650e845dc)
+
 ### [4.6.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.5.1...v4.6.0) (2025-05-28)
 
 ### 🚀 Features
