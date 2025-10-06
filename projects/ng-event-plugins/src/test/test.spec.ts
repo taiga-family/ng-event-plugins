@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';

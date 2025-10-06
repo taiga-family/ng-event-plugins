@@ -1,6 +1,6 @@
-import type {EventManager} from '@angular/platform-browser';
+import {type EventManager} from '@angular/platform-browser';
 
-import type {EventManagerPlugin} from '../types/event-manager-plugin';
+import {type EventManagerPlugin} from '../types/event-manager-plugin';
 import {LongtapEvent} from '../types/longtap.event';
 import {isIos} from '../utils/is-ios';
 

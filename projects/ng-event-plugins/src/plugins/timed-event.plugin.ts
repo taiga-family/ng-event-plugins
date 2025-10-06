@@ -1,6 +1,6 @@
-import type {EventManager} from '@angular/platform-browser';
+import {type EventManager} from '@angular/platform-browser';
 
-import type {EventManagerPlugin} from '../types/event-manager-plugin';
+import {type EventManagerPlugin} from '../types/event-manager-plugin';
 
 export abstract class TimedEventPlugin implements EventManagerPlugin {
     protected abstract readonly regExp: RegExp;

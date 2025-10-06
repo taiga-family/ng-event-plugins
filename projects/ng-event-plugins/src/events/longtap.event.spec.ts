@@ -1,7 +1,5 @@
-import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
@@ -40,7 +38,6 @@ describe('LongtapEventPlugin', () => {
         });
     }
 
-    // eslint-disable-next-line jest/no-duplicate-hooks
     beforeEach(() => {
         jest.useFakeTimers();
 

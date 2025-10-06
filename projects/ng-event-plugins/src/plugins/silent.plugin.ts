@@ -1,5 +1,4 @@
-import type {NgZone} from '@angular/core';
-import {Injectable} from '@angular/core';
+import {Injectable, type NgZone} from '@angular/core';
 
 import {AbstractEventPlugin} from './abstract.plugin';
 
