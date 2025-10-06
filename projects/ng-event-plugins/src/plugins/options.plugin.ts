@@ -14,7 +14,7 @@ export class OptionsEventPlugin extends AbstractEventPlugin {
         element: HTMLElement,
         event: string,
         handler: EventListener,
-    ): Function {
+    ): () => void {
         const unwrap = this.unwrap(event);
         const capture = event.includes('.capture');
 

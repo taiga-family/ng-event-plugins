@@ -1,6 +1,6 @@
-import type {EventManager} from '@angular/platform-browser';
+import {type EventManager} from '@angular/platform-browser';
 
-import type {EventManagerPlugin} from '../types/event-manager-plugin';
+import {type EventManagerPlugin} from '../types/event-manager-plugin';
 import {LongtapEvent} from '../types/longtap.event';
 import {isIos} from '../utils/is-ios';
 
@@ -17,7 +17,7 @@ export class LongtapEventPlugin implements EventManagerPlugin {
         element: HTMLElement,
         _event: string,
         handler: (event: Event) => void,
-    ): Function {
+    ): () => void {
         const removeLongtapEventPolyfill = this.isIOS
             ? this.listenTouchEvents(element)
             : this.listenContextmenuEvent(element);
@@ -35,17 +35,17 @@ export class LongtapEventPlugin implements EventManagerPlugin {
         return event === 'longtap';
     }
 
-    private listenContextmenuEvent(element: HTMLElement): Function {
+    private listenContextmenuEvent(element: HTMLElement): () => void {
         return this.manager.addEventListener(
             element,
             'contextmenu.prevent.stop',
             ({clientX, clientY}: MouseEvent) => {
                 this.dispatchLongtapEvent(element, clientX, clientY);
             },
-        );
+        ) as unknown as () => void;
     }
 
-    private listenTouchEvents(element: HTMLElement): Function {
+    private listenTouchEvents(element: HTMLElement): () => void {
         let longTapTimeout: any = null;
         let touchStartCoords: {
             clientX: number;

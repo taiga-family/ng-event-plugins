@@ -6,18 +6,18 @@ import {AbstractEventPlugin} from './abstract.plugin';
 export class StopEventPlugin extends AbstractEventPlugin {
     protected readonly modifier = '.stop';
 
-    public addEventListener(
+    public addEventListener<T extends Event>(
         element: HTMLElement,
         event: string,
-        handler: Function,
-    ): Function {
+        handler: (event: T) => void,
+    ): () => void {
         return this.manager.addEventListener(
             element,
             this.unwrap(event),
-            (event: Event): void => {
+            (event: T): void => {
                 event.stopPropagation();
                 handler(event);
             },
-        );
+        ) as unknown as () => void;
     }
 }

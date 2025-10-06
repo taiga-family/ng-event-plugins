@@ -14,7 +14,7 @@ export class ResizePlugin extends AbstractEventPlugin {
         element: HTMLElement,
         event: string,
         handler: ResizeObserverCallback,
-    ): Function {
+    ): () => void {
         if (typeof ResizeObserver === 'undefined' || !(element instanceof Element)) {
             element.addEventListener(event, handler as unknown as EventListener);
 

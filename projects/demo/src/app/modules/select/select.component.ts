@@ -1,5 +1,4 @@
 import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +7,7 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -29,12 +29,12 @@ import {shouldCall} from '@taiga-ui/event-plugins';
 })
 export class SelectComponent {
     @ViewChild('input')
-    private readonly input!: ElementRef;
+    private readonly input?: ElementRef;
 
     @ViewChildren('option')
-    private readonly options!: QueryList<ElementRef>;
+    private readonly options?: QueryList<ElementRef>;
 
-    private readonly document = inject(DOCUMENT);
+    private readonly doc = inject(DOCUMENT);
     protected readonly elementRef = inject(ElementRef);
     protected open = false;
 
@@ -48,13 +48,13 @@ export class SelectComponent {
     public readonly valueChange = new EventEmitter<string>();
 
     protected get focused(): boolean {
-        return this.elementRef.nativeElement.contains(this.document.activeElement);
+        return this.elementRef.nativeElement.contains(this.doc.activeElement);
     }
 
     @shouldCall((_, open) => open)
     protected onEsc(event: KeyboardEvent, _open: boolean): void {
         event.stopPropagation();
-        this.input.nativeElement.focus();
+        this.input?.nativeElement.focus();
         this.open = false;
     }
 
@@ -74,14 +74,14 @@ export class SelectComponent {
     @shouldCall((currentIndex, length) => currentIndex < length - 1)
     protected onArrowDown(currentIndex: number, _length?: number): void {
         this.options
-            ?.find?.((_item, index) => index === currentIndex + 1)
+            ?.find((_item, index) => index === currentIndex + 1)
             ?.nativeElement.focus();
     }
 
     @shouldCall((currentIndex) => !!currentIndex)
     protected onArrowUp(currentIndex: number): void {
         this.options
-            ?.find?.((_item, index) => index === currentIndex - 1)
+            ?.find((_item, index) => index === currentIndex - 1)
             ?.nativeElement.focus();
     }
 
@@ -90,14 +90,14 @@ export class SelectComponent {
     }
 
     protected onSelect(value: string): void {
-        this.input.nativeElement.focus();
+        this.input?.nativeElement.focus();
         this.value = value;
         this.valueChange.emit(value);
         this.open = false;
     }
 
     protected onInputArrowDown(): void {
-        if (!this.options.first) {
+        if (!this.options?.first) {
             this.open = true;
         } else {
             this.options.first.nativeElement.focus();

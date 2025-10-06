@@ -1,6 +1,6 @@
-import type {EventManager} from '@angular/platform-browser';
+import {type EventManager} from '@angular/platform-browser';
 
-import type {EventManagerPlugin} from '../types/event-manager-plugin';
+import {type EventManagerPlugin} from '../types/event-manager-plugin';
 
 export abstract class AbstractEventPlugin implements EventManagerPlugin {
     protected abstract readonly modifier: string;
@@ -10,8 +10,8 @@ export abstract class AbstractEventPlugin implements EventManagerPlugin {
     public abstract addEventListener(
         element: HTMLElement,
         event: string,
-        handler: Function,
-    ): Function;
+        handler: (...events: unknown[]) => void,
+    ): () => void;
 
     public supports(event: string): boolean {
         return event.includes(this.modifier);

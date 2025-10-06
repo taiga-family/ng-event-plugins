@@ -3,17 +3,17 @@ import {TimedEventPlugin} from './timed-event.plugin';
 export class ThrottleEventPlugin extends TimedEventPlugin {
     protected override readonly regExp = /\.throttle~(?<time>\d+)(?<units>ms|s)/;
 
-    public override addEventListener(
+    public override addEventListener<T extends Event>(
         element: HTMLElement,
         eventName: string,
-        handler: Function,
-    ): Function {
+        handler: (event: T) => void,
+    ): () => void {
         let timeout: ReturnType<typeof setTimeout> | undefined;
 
         const unsubscribe = this.manager.addEventListener(
             element,
             this.unwrap(eventName),
-            (event: Event): void => {
+            (event: T): void => {
                 if (timeout !== undefined) {
                     return;
                 }

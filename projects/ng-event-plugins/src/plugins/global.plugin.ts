@@ -21,14 +21,18 @@ export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
 
 @Injectable()
 export class GlobalEventPlugin extends AbstractEventPlugin {
-    private readonly handler: Function = inject(GLOBAL_HANDLER);
+    private readonly handler = inject<(name: string) => HTMLElement>(GLOBAL_HANDLER);
     protected readonly modifier = '>';
 
-    public addEventListener(_: HTMLElement, event: string, handler: Function): Function {
+    public addEventListener<T extends Event>(
+        _: HTMLElement,
+        event: string,
+        handler: (event: T) => void,
+    ): () => void {
         return this.manager.addEventListener(
-            this.handler(event.split('>')[0]),
-            event.split('>')?.[1] ?? '',
+            this.handler(event.split('>')[0] ?? ''),
+            event.split('>')[1] ?? '',
             handler,
-        );
+        ) as unknown as () => void;
     }
 }
