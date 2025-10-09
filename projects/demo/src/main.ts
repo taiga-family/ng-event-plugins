@@ -1,6 +1,6 @@
 import {APP_BASE_HREF, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -11,7 +11,7 @@ import {StaticComponent} from './app/modules/static/static.component';
 bootstrapApplication(AppComponent, {
     providers: [
         provideEventPlugins(),
-        provideAnimations(),
+        provideAnimationsAsync(),
         provideRouter(
             [
                 {

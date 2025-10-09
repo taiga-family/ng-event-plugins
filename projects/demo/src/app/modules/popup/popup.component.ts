@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
     standalone: true,
     selector: 'popup',
     templateUrl: './popup.template.html',
-    styleUrls: ['./popup.style.less'],
+    styleUrl: './popup.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(window:keydown.esc)': 'onEsc()',

@@ -1,17 +1,14 @@
-import {type EventManager} from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
+import {inject, Injectable} from '@angular/core';
+import {EventManagerPlugin} from '@angular/platform-browser';
 
-import {type EventManagerPlugin} from '../types/event-manager-plugin';
-
-export abstract class AbstractEventPlugin implements EventManagerPlugin {
+@Injectable()
+export abstract class AbstractEventPlugin extends EventManagerPlugin {
     protected abstract readonly modifier: string;
 
-    public manager!: EventManager;
-
-    public abstract addEventListener(
-        element: HTMLElement,
-        event: string,
-        handler: Function,
-    ): Function;
+    constructor() {
+        super(inject(DOCUMENT));
+    }
 
     public supports(event: string): boolean {
         return event.includes(this.modifier);

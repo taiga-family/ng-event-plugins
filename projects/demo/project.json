@@ -3,33 +3,29 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "sourceRoot": "projects/demo/src",
-    "tags": [],
     "targets": {
         "build": {
-            "executor": "@angular-devkit/build-angular:browser",
+            "executor": "@angular/build:application",
             "options": {
                 "baseHref": "/",
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
-                "main": "projects/demo/src/main.ts",
-                "polyfills": "projects/demo/src/polyfills.ts",
+                "polyfills": ["projects/demo/src/polyfills.ts"],
                 "tsConfig": "projects/demo/tsconfig.json",
                 "assets": ["projects/demo/src/favicon.ico"],
                 "styles": ["node_modules/highlight.js/styles/idea.css", "projects/demo/src/styles.css"],
-                "vendorChunk": true,
                 "extractLicenses": false,
-                "buildOptimizer": false,
                 "sourceMap": true,
                 "optimization": false,
                 "namedChunks": true,
-                "scripts": []
+                "scripts": [],
+                "browser": "projects/demo/src/main.ts"
             },
             "configurations": {
                 "production": {
                     "optimization": true,
                     "sourceMap": false,
                     "namedChunks": false,
-                    "buildOptimizer": true,
                     "statsJson": false,
                     "progress": false
                 },
@@ -38,19 +34,21 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "executor": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular/build:dev-server",
             "options": {
-                "browserTarget": "demo:build"
+                "buildTarget": "demo:build"
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:development"
+                    "buildTarget": "demo:build:development"
                 },
                 "development": {
-                    "browserTarget": "demo:build:development"
+                    "buildTarget": "demo:build:development"
                 }
             },
-            "defaultConfiguration": "development"
+            "defaultConfiguration": "development",
+            "parallelism": true
         }
-    }
+    },
+    "implicitDependencies": []
 }

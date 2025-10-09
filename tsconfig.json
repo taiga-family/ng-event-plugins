@@ -4,10 +4,9 @@
         "baseUrl": "./",
         "outDir": "./dist/out-tsc",
         "sourceMap": true,
-        "target": "ES2022",
+        "types": [],
         "paths": {
             "@taiga-ui/event-plugins": ["projects/ng-event-plugins/src"]
         }
-    },
-    "exclude": ["**/*.mjs"]
+    }
 }
