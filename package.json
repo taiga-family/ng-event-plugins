@@ -62,16 +62,6 @@
         "extends @taiga-ui/browserslist-config"
     ],
     "prettier": "@taiga-ui/prettier-config",
-    "eslintConfig": {
-        "extends": [
-            "plugin:@taiga-ui/experience/all"
-        ],
-        "rules": {
-            "@typescript-eslint/ban-types": "off",
-            "import/no-webpack-loader-syntax": "off"
-        },
-        "root": true
-    },
     "stylelint": {
         "extends": [
             "@taiga-ui/stylelint-config"
@@ -98,7 +88,8 @@
         "@taiga-ui/auto-changelog-config": "0.332.0",
         "@taiga-ui/browserslist-config": "0.332.0",
         "@taiga-ui/commitlint-config": "0.332.0",
-        "@taiga-ui/eslint-plugin-experience": "0.249.0",
+        "@taiga-ui/eslint-plugin-experience-next": "0.332.0",
+        "@taiga-ui/jest-config": "0.332.0",
         "@taiga-ui/prettier-config": "0.332.0",
         "@taiga-ui/release-it-config": "0.332.0",
         "@taiga-ui/stylelint-config": "0.332.0",
