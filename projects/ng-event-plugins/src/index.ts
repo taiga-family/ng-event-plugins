@@ -12,4 +12,5 @@ export * from './plugins/stop.plugin';
 export * from './plugins/throttle.plugin';
 export * from './plugins/timed-event.plugin';
 export * from './plugins/zoneless.plugin';
+export * from './types/longtap.event';
 export * from './utils/as-callable';

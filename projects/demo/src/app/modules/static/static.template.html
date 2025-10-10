@@ -35,17 +35,17 @@
 <pre><code [highlight]="(html | async)?.default || ''"></code></pre>
 <pre><code [highlight]="(typescript | async)?.default || ''"></code></pre>
 <blockquote>Keep in mind example is heavily simplified</blockquote>
-<popup
-    *ngIf="popup"
-    (closed)="onClosed()"
->
-    <h1>Popup</h1>
-    <custom-select [items]="items" />
-    <blockquote>
-        When Esc button is pressed, popup should close. However, if dropdown is opened in Select — Esc button should
-        only close the dropdown. This can be achieved by stopping event propagation. But if the dropdown is already
-        closed, Select should not handle Esc keydown event. This can be achieved using
-        <code>&#64;shouldCall</code>
-        decorator.
-    </blockquote>
-</popup>
+
+@if (popup) {
+    <popup (closed)="onClosed()">
+        <h1>Popup</h1>
+        <custom-select [items]="items" />
+        <blockquote>
+            When Esc button is pressed, popup should close. However, if dropdown is opened in Select — Esc button should
+            only close the dropdown. This can be achieved by stopping event propagation. But if the dropdown is already
+            closed, Select should not handle Esc keydown event. This can be achieved using
+            <code>&#64;shouldCall</code>
+            decorator.
+        </blockquote>
+    </popup>
+}

@@ -1,24 +1,22 @@
-import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     EventEmitter,
     inject,
-    Input,
+    input,
+    linkedSignal,
     Output,
-    type QueryList,
-    ViewChild,
-    ViewChildren,
+    viewChild,
+    viewChildren,
 } from '@angular/core';
 import {shouldCall} from '@taiga-ui/event-plugins';
 
 @Component({
-    standalone: true,
     selector: 'custom-select',
-    imports: [NgForOf, NgIf],
     templateUrl: './select.template.html',
-    styleUrls: ['./select.style.less'],
+    styleUrl: './select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._open]': 'open',
@@ -28,21 +26,17 @@ import {shouldCall} from '@taiga-ui/event-plugins';
     },
 })
 export class SelectComponent {
-    @ViewChild('input')
-    private readonly input!: ElementRef;
-
-    @ViewChildren('option')
-    private readonly options!: QueryList<ElementRef>;
+    private readonly input = viewChild.required<ElementRef>('input');
+    private readonly options = viewChildren<ElementRef>('option');
 
     private readonly document = inject(DOCUMENT);
     protected readonly elementRef = inject(ElementRef);
     protected open = false;
 
-    @Input()
-    public items: readonly string[] = [];
+    protected readonly state = linkedSignal(() => this.value());
 
-    @Input()
-    public value = '';
+    public readonly items = input<readonly string[]>([]);
+    public readonly value = input('');
 
     @Output()
     public readonly valueChange = new EventEmitter<string>();
@@ -54,7 +48,7 @@ export class SelectComponent {
     @shouldCall((_, open) => open)
     protected onEsc(event: KeyboardEvent, _open: boolean): void {
         event.stopPropagation();
-        this.input.nativeElement.focus();
+        this.input().nativeElement.focus();
         this.open = false;
     }
 
@@ -73,15 +67,15 @@ export class SelectComponent {
 
     @shouldCall((currentIndex, length) => currentIndex < length - 1)
     protected onArrowDown(currentIndex: number, _length?: number): void {
-        this.options
-            ?.find?.((_item, index) => index === currentIndex + 1)
+        this.options()
+            .find((_, index) => index === currentIndex + 1)
             ?.nativeElement.focus();
     }
 
     @shouldCall((currentIndex) => !!currentIndex)
     protected onArrowUp(currentIndex: number): void {
-        this.options
-            ?.find?.((_item, index) => index === currentIndex - 1)
+        this.options()
+            .find((_, index) => index === currentIndex - 1)
             ?.nativeElement.focus();
     }
 
@@ -90,17 +84,17 @@ export class SelectComponent {
     }
 
     protected onSelect(value: string): void {
-        this.input.nativeElement.focus();
-        this.value = value;
+        this.input().nativeElement.focus();
+        this.state.set(value);
         this.valueChange.emit(value);
         this.open = false;
     }
 
     protected onInputArrowDown(): void {
-        if (!this.options.first) {
+        if (!this.options()[0]) {
             this.open = true;
         } else {
-            this.options.first.nativeElement.focus();
+            this.options()[0]?.nativeElement.focus();
         }
     }
 }

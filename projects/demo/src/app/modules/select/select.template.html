@@ -3,25 +3,28 @@
     placeholder="Select value"
     readonly
     class="input"
-    [value]="value"
+    [value]="state()"
     (click)="onClick()"
     (keydown.arrowDown.prevent)="onInputArrowDown()"
 />
-<div
-    *ngIf="open"
-    class="dropdown"
-    (mouseleave)="input.focus()"
->
+
+@if (open) {
     <div
-        *ngFor="let item of items; let index = index"
-        #option
-        tabindex="-1"
-        class="option"
-        (click)="onSelect(item)"
-        (keydown.arrowDown.zoneless.prevent)="onArrowDown(index, items.length)"
-        (keydown.arrowUp.zoneless.prevent)="onArrowUp(index)"
-        (mousemove.zoneless)="onMouseMove(option)"
+        class="dropdown"
+        (mouseleave)="input.focus()"
     >
-        {{ item }}
+        @for (item of items(); track item) {
+            <div
+                #option
+                tabindex="-1"
+                class="option"
+                (click)="onSelect(item)"
+                (keydown.arrowDown.zoneless.prevent)="onArrowDown($index, $count)"
+                (keydown.arrowUp.zoneless.prevent)="onArrowUp($index)"
+                (mousemove.zoneless)="onMouseMove(option)"
+            >
+                {{ item }}
+            </div>
+        }
     </div>
-</div>
+}

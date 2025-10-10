@@ -1,6 +1,5 @@
-import {type EventManager} from '@angular/platform-browser';
+import {EventManagerPlugin} from '@angular/platform-browser';
 
-import {type EventManagerPlugin} from '../types/event-manager-plugin';
 import {LongtapEvent} from '../types/longtap.event';
 import {isIos} from '../utils/is-ios';
 
@@ -8,10 +7,8 @@ const TAP_DELAY = 700;
 const SAFE_NAVIGATOR = typeof navigator === 'undefined' ? null : navigator;
 const MOVE_THRESHOLD = 15;
 
-export class LongtapEventPlugin implements EventManagerPlugin {
+export class LongtapEventPlugin extends EventManagerPlugin {
     private readonly isIOS = !!SAFE_NAVIGATOR && isIos(SAFE_NAVIGATOR);
-
-    public readonly manager!: EventManager;
 
     public addEventListener(
         element: HTMLElement,
