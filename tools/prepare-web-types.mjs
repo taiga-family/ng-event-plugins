@@ -1,4 +1,4 @@
-import {readFile, writeFile} from 'fs/promises';
+import {readFile, writeFile} from 'node:fs/promises';
 
 const pluginsPath = new URL('../dist/ng-event-plugins/', import.meta.url);
 const webTypesPath = new URL('./web-types.json', pluginsPath);

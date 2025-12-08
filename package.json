@@ -20,23 +20,26 @@
     ],
     "homepage": "https://github.com/taiga-family/ng-event-plugins#README",
     "bugs": "https://github.com/taiga-family/ng-event-plugins/issues",
-    "repository": "https://github.com/taiga-family/ng-event-plugins",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/ng-event-plugins"
+    },
     "license": "Apache-2.0",
     "workspaces": [
         "projects/*"
     ],
     "scripts": {
-        "postinstall": "husky",
-        "nx": "nx",
-        "start": "nx serve demo",
-        "start:ssr": "nx run demo:serve-ssr",
         "build": "nx build ng-event-plugins && node tools/prepare-web-types.mjs",
         "build:demo": "nx build demo",
-        "test": "nx test ng-event-plugins",
-        "stylelint": "stylelint '**/*.{less,css}'",
+        "postinstall": "husky",
         "lint": "eslint .",
+        "nx": "nx",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
-        "release": "npx syncer && npx nx publish ng-event-plugins"
+        "release": "npx syncer && npx nx publish ng-event-plugins",
+        "start": "nx serve demo",
+        "start:ssr": "nx run demo:serve-ssr",
+        "stylelint": "stylelint '**/*.{less,css}'",
+        "test": "nx test ng-event-plugins"
     },
     "commitlint": {
         "extends": [
@@ -65,32 +68,25 @@
         ]
     },
     "devDependencies": {
+        "@angular-devkit/build-angular": "19.2.19",
         "@angular-devkit/core": "19.2.19",
-        "@angular/animations": "19.2.15",
+        "@angular/animations": "19.2.17",
         "@angular/build": "19.2.19",
         "@angular/cli": "19.2.19",
-        "@angular/common": "19.2.15",
-        "@angular/compiler": "19.2.15",
-        "@angular/compiler-cli": "19.2.15",
-        "@angular/core": "19.2.15",
-        "@angular/forms": "19.2.15",
-        "@angular/language-service": "19.2.15",
-        "@angular/platform-browser": "19.2.15",
-        "@angular/platform-browser-dynamic": "19.2.15",
-        "@angular/platform-server": "19.2.15",
-        "@angular/router": "19.2.15",
-        "@nx/jest": "21.6.9",
-        "@nx/workspace": "21.6.9",
-        "@taiga-ui/auto-changelog-config": "0.339.0",
-        "@taiga-ui/browserslist-config": "0.339.0",
-        "@taiga-ui/commitlint-config": "0.339.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.339.0",
-        "@taiga-ui/jest-config": "0.339.0",
-        "@taiga-ui/prettier-config": "0.339.0",
-        "@taiga-ui/release-it-config": "0.339.0",
-        "@taiga-ui/stylelint-config": "0.339.0",
-        "@taiga-ui/syncer": "0.339.0",
-        "@taiga-ui/tsconfig": "0.339.0",
+        "@angular/common": "19.2.17",
+        "@angular/compiler": "19.2.17",
+        "@angular/compiler-cli": "19.2.17",
+        "@angular/core": "19.2.17",
+        "@angular/forms": "19.2.17",
+        "@angular/language-service": "19.2.17",
+        "@angular/platform-browser": "19.2.17",
+        "@angular/platform-browser-dynamic": "19.2.17",
+        "@angular/platform-server": "19.2.17",
+        "@angular/router": "19.2.17",
+        "@nx/jest": "21.6.10",
+        "@nx/workspace": "21.6.10",
+        "@taiga-ui/configs": "0.373.0",
+        "@taiga-ui/syncer": "0.373.0",
         "@types/estree": "1.0.8",
         "@types/express": "5.0.5",
         "@types/jest": "29.5.14",
@@ -100,7 +96,7 @@
         "less": "4.4.2",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "10.0.0",
-        "nx": "21.6.9",
+        "nx": "21.6.10",
         "rxjs": "7.8.2",
         "ts-node": "10.9.2",
         "tslib": "2.8.1",
@@ -118,8 +114,7 @@
         "matchPackageNames": [
             "@taiga-ui/event-plugins",
             "ng-event-plugins"
-        ],
-        "ignorePackageNames": []
+        ]
     },
     "web-types": "./projects/ng-event-plugins/web-types.json"
 }
