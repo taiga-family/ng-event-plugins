@@ -8,13 +8,11 @@ import {OptionsEventPlugin} from '../plugins/options.plugin';
 import {PreventEventPlugin} from '../plugins/prevent.plugin';
 import {ResizePlugin} from '../plugins/resize.plugin';
 import {SelfEventPlugin} from '../plugins/self.plugin';
-import {SilentEventPlugin} from '../plugins/silent.plugin';
 import {StopEventPlugin} from '../plugins/stop.plugin';
 import {ThrottleEventPlugin} from '../plugins/throttle.plugin';
 import {ZonelessPlugin} from '../plugins/zoneless.plugin';
 
 const PLUGINS = [
-    SilentEventPlugin,
     ZonelessPlugin,
     SelfEventPlugin,
     GlobalEventPlugin,

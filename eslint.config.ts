@@ -10,6 +10,7 @@ export default [
             '@typescript-eslint/no-unsafe-function-type': 'off',
             '@typescript-eslint/no-unnecessary-condition': 'off',
             'import/no-webpack-loader-syntax': 'off',
+            'func-style': 'off',
         },
     },
 ];
