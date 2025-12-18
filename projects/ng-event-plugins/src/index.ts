@@ -7,7 +7,6 @@ export * from './plugins/options.plugin';
 export * from './plugins/prevent.plugin';
 export * from './plugins/resize.plugin';
 export * from './plugins/self.plugin';
-export * from './plugins/silent.plugin';
 export * from './plugins/stop.plugin';
 export * from './plugins/throttle.plugin';
 export * from './plugins/timed-event.plugin';

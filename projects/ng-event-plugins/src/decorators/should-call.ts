@@ -1,21 +1,28 @@
-import {SilentEventPlugin} from '../plugins/silent.plugin';
+import {ZonelessPlugin} from '../plugins/zoneless.plugin';
 
-export type Predicate<T> = (this: T, ...args: any[]) => boolean;
-
-export function shouldCall<T>(predicate: Predicate<T>): MethodDecorator {
-    return (_target, _key, desc: PropertyDescriptor) => {
-        const {value} = desc;
-
-        desc.value = function (this: T, ...args: any[]) {
+export function shouldCall<T>(predicate: (this: T, ...args: any[]) => boolean): any {
+    return (
+        original: Function,
+        _context: ClassMethodDecoratorContext,
+        desc?: PropertyDescriptor,
+    ): any => {
+        const value = desc?.value || original;
+        const result = function (this: T, ...args: any[]): void {
             if (!predicate.apply(this, args)) {
                 return;
             }
 
-            if (SilentEventPlugin.ngZone) {
-                SilentEventPlugin.ngZone.run(() => value.apply(this, args));
+            if (ZonelessPlugin.ngZone) {
+                ZonelessPlugin.ngZone.run(() => value.apply(this, args));
             } else {
                 value.apply(this, args);
             }
         };
+
+        if (!desc) {
+            return result;
+        }
+
+        desc.value = result;
     };
 }

@@ -6,7 +6,7 @@ import {provideEventPlugins} from '@taiga-ui/event-plugins';
 import {BehaviorSubject, identity} from 'rxjs';
 
 import {shouldCall} from '../decorators/should-call';
-import {SilentEventPlugin} from '../plugins/silent.plugin';
+import {ZonelessPlugin} from '../plugins/zoneless.plugin';
 import {asCallable} from '../utils/as-callable';
 
 describe('EventManagers', () => {
@@ -470,13 +470,13 @@ describe('EventManagers', () => {
         }
 
         const test = new Test();
-        const zone = SilentEventPlugin.ngZone;
+        const zone = ZonelessPlugin.ngZone;
 
-        SilentEventPlugin.ngZone = undefined;
+        ZonelessPlugin.ngZone = undefined;
 
         test.test(true);
 
-        SilentEventPlugin.ngZone = zone;
+        ZonelessPlugin.ngZone = zone;
 
         expect(test.flag).toBe(true);
     });
