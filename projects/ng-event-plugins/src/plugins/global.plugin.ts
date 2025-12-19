@@ -13,7 +13,7 @@ export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
             return (name) =>
                 name
                     .split('.')
-                    .reduce((obj, prop) => obj?.[prop], document.defaultView as any);
+                    .reduce<any>((obj, prop) => obj?.[prop], document.defaultView);
         },
     },
 );

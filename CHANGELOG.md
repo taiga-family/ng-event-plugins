@@ -139,7 +139,7 @@ All notable changes to this project will be documented in this file. See
 - fix memory leak in `capture` plugin (#218) (#219)
   [(5fe51f8)](https://github.com/taiga-family/ng-event-plugins/commit/5fe51f8579ac8ea0e250527976ea5fc5531ed52d)
 
-### [3.2.0]() (2024-04-10)
+### [3.2.0](https://github.com/taiga-family/ng-event-plugins/releases/tag/v3.2.0) (2024-04-10)
 
 ### 🚀 Features
 
