@@ -1,3 +1,12 @@
+## [5.0.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.7.0...v5.0.0) (2025-12-19)
+
+### 🚀 Features
+
+- **global**: allow nested targets by dot path
+  [(4026ab7)](https://github.com/taiga-family/ng-event-plugins/commit/4026ab741b447c339793d1e2b560bee26ff72532)
+- upgrade to Angular 19 (#1005)
+  [(240ae9e)](https://github.com/taiga-family/ng-event-plugins/commit/240ae9e385ce241b2a02bd149f2f5940821777a8)
+
 ### [4.7.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.6.0...v4.7.0) (2025-09-02)
 
 ### 🚀 Features
