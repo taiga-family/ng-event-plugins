@@ -11,11 +11,14 @@ _stopPropagation()_.
 
 ## How to use
 
-1. Add `NG_EVENT_PLUGINS` to your app providers:
+1. Register the plugins using the `provideEventPlugins()` provider function in your application providers:
 
    ```typescript
    bootstrapApplication(AppComponent, {
-     providers: [NG_EVENT_PLUGINS],
+     providers: [
+       provideEventPlugins(),
+       // ... other providers
+     ],
    });
    ```
 
