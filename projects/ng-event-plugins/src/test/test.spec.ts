@@ -448,7 +448,7 @@ describe('EventManagers', () => {
             expect(test.flag).toBe(true);
         });
 
-        it('and doesnt call the method', () => {
+        it("and doesn't call the method", () => {
             const test = new Test();
 
             test.flag = true;

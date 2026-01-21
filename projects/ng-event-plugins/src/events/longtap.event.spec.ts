@@ -41,9 +41,7 @@ describe('LongtapEventPlugin', () => {
     beforeEach(() => {
         jest.useFakeTimers();
 
-        TestBed.configureTestingModule({
-            providers: [provideEventPlugins()],
-        });
+        TestBed.configureTestingModule({providers: [provideEventPlugins()]});
     });
 
     describe('if iOS', () => {
@@ -182,9 +180,7 @@ describe('LongtapEventPlugin', () => {
             describe('when touchcancel event fired', () => {
                 beforeEach(() => {
                     div1Element.nativeElement.dispatchEvent(
-                        new TouchEvent('touchcancel', {
-                            touches: [],
-                        }),
+                        new TouchEvent('touchcancel', {touches: []}),
                     );
                 });
 
@@ -206,9 +202,7 @@ describe('LongtapEventPlugin', () => {
             describe('when touchend event fired', () => {
                 beforeEach(() => {
                     div1Element.nativeElement.dispatchEvent(
-                        new TouchEvent('touchcancel', {
-                            touches: [],
-                        }),
+                        new TouchEvent('touchcancel', {touches: []}),
                     );
                 });
 
@@ -236,7 +230,7 @@ describe('LongtapEventPlugin', () => {
 
         createComponentBeforeEach();
 
-        describe('when contexmenu event fired', () => {
+        describe('when contextmenu event fired', () => {
             beforeEach(() => {
                 div1Element.nativeElement.dispatchEvent(
                     new MouseEvent('contextmenu', {
