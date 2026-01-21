@@ -12,28 +12,57 @@ import {StopEventPlugin} from '../plugins/stop.plugin';
 import {ThrottleEventPlugin} from '../plugins/throttle.plugin';
 import {ZonelessPlugin} from '../plugins/zoneless.plugin';
 
-const PLUGINS = [
-    ZonelessPlugin,
-    SelfEventPlugin,
-    GlobalEventPlugin,
-    OptionsEventPlugin,
-    PreventEventPlugin,
-    ResizePlugin,
-    StopEventPlugin,
-    LongtapEventPlugin,
-    DebounceEventPlugin,
-    ThrottleEventPlugin,
-];
-
-/**
- * @deprecated: use {@link provideEventPlugins}
- */
-export const NG_EVENT_PLUGINS: Provider[] = PLUGINS.map((useClass) => ({
-    provide: EVENT_MANAGER_PLUGINS,
-    multi: true,
-    useClass,
-}));
-
 export function provideEventPlugins(): Provider[] {
-    return NG_EVENT_PLUGINS;
+    return [
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: ZonelessPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: SelfEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: GlobalEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: OptionsEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: PreventEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: ResizePlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: StopEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: LongtapEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: DebounceEventPlugin,
+        },
+        {
+            provide: EVENT_MANAGER_PLUGINS,
+            multi: true,
+            useClass: ThrottleEventPlugin,
+        },
+    ];
 }
