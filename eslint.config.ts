@@ -13,8 +13,6 @@ export default [
     },
     {
         files: ['**/*.md'],
-        rules: {
-            'markdown/heading-increment': 'off',
-        },
+        rules: {'markdown/heading-increment': 'off'},
     },
 ];
