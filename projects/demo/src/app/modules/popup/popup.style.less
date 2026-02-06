@@ -1,7 +1,7 @@
 :host {
     position: fixed;
-    top: 20%;
-    left: 50%;
+    inset-block-start: 20%;
+    inset-inline-start: 50%;
     inline-size: 20rem;
     margin-inline-start: -10rem;
     border-radius: 0.5rem;
@@ -12,10 +12,10 @@
     &::before {
         content: '';
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        inset-block-end: 0;
         background: rgba(0, 0, 0, 0.3);
     }
 

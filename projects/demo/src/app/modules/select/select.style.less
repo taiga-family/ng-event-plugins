@@ -6,13 +6,13 @@
     &::after {
         content: '';
         position: absolute;
-        top: 1.3125rem;
-        right: 1.25rem;
+        inset-block-start: 1.3125rem;
+        inset-inline-end: 1.25rem;
         inline-size: 0.5rem;
         block-size: 0.5rem;
         transform: rotate(135deg);
-        border-top: 0.125rem solid #808080;
-        border-right: 0.125rem solid #808080;
+        border-block-start: 0.125rem solid #808080;
+        border-inline-end: 0.125rem solid #808080;
         pointer-events: none;
         transition: transform 0.3s;
     }
@@ -41,9 +41,9 @@
 
 .dropdown {
     position: absolute;
-    top: 3.75rem;
-    left: 0;
-    right: 0;
+    inset-block-start: 3.75rem;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
     background: #fff;
     border: 1px solid #e7e8ea;
     border-radius: 0.25rem;
