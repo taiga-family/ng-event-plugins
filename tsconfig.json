@@ -3,10 +3,10 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist/out-tsc",
-        "sourceMap": true,
-        "types": [],
         "paths": {
             "@taiga-ui/event-plugins": ["projects/ng-event-plugins/src"]
-        }
+        },
+        "sourceMap": true,
+        "types": []
     }
 }

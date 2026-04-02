@@ -1,53 +1,52 @@
 {
-    "name": "demo",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "demo",
     "projectType": "application",
     "sourceRoot": "projects/demo/src",
-    "implicitDependencies": [],
     "targets": {
         "build": {
+            "configurations": {
+                "development": {},
+                "production": {
+                    "namedChunks": false,
+                    "optimization": true,
+                    "progress": false,
+                    "sourceMap": false,
+                    "statsJson": false
+                }
+            },
+            "defaultConfiguration": "production",
             "executor": "@angular/build:application",
             "options": {
-                "baseHref": "/",
-                "outputPath": "dist/demo",
-                "index": "projects/demo/src/index.html",
-                "polyfills": ["projects/demo/src/polyfills.ts"],
-                "tsConfig": "projects/demo/tsconfig.json",
                 "assets": ["projects/demo/src/favicon.ico"],
-                "styles": ["node_modules/highlight.js/styles/idea.css", "projects/demo/src/styles.css"],
+                "baseHref": "/",
+                "browser": "projects/demo/src/main.ts",
                 "extractLicenses": false,
-                "sourceMap": true,
-                "optimization": false,
+                "index": "projects/demo/src/index.html",
                 "namedChunks": true,
+                "optimization": false,
+                "outputPath": "dist/demo",
+                "polyfills": ["projects/demo/src/polyfills.ts"],
                 "scripts": [],
-                "browser": "projects/demo/src/main.ts"
-            },
-            "configurations": {
-                "production": {
-                    "optimization": true,
-                    "sourceMap": false,
-                    "namedChunks": false,
-                    "statsJson": false,
-                    "progress": false
-                },
-                "development": {}
-            },
-            "defaultConfiguration": "production"
+                "sourceMap": true,
+                "styles": ["node_modules/highlight.js/styles/idea.css", "projects/demo/src/styles.css"],
+                "tsConfig": "projects/demo/tsconfig.json"
+            }
         },
         "serve": {
-            "executor": "@angular/build:dev-server",
-            "options": {
-                "buildTarget": "demo:build"
-            },
             "configurations": {
-                "production": {
+                "development": {
                     "buildTarget": "demo:build:development"
                 },
-                "development": {
+                "production": {
                     "buildTarget": "demo:build:development"
                 }
             },
             "defaultConfiguration": "development",
+            "executor": "@angular/build:dev-server",
+            "options": {
+                "buildTarget": "demo:build"
+            },
             "parallelism": true
         }
     }
