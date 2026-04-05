@@ -91,10 +91,10 @@ export class SelectComponent {
     }
 
     protected onInputArrowDown(): void {
-        if (!this.options()[0]) {
-            this.open = true;
-        } else {
+        if (this.options()[0]) {
             this.options()[0]?.nativeElement.focus();
+        } else {
+            this.open = true;
         }
     }
 }
