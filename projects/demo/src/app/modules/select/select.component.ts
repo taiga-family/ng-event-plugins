@@ -19,10 +19,10 @@ import {shouldCall} from '@taiga-ui/event-plugins';
     styleUrl: './select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._open]': 'open',
         '[class._focused]': 'focused',
-        '(keydown.esc.zoneless)': 'onEsc($event, open)',
+        '[class._open]': 'open',
         '(focusout.zoneless)': 'onBlur($event.relatedTarget, elementRef.nativeElement)',
+        '(keydown.esc.zoneless)': 'onEsc($event, open)',
     },
 })
 export class SelectComponent {
