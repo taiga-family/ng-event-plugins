@@ -72,16 +72,16 @@ describe('EventManagers', () => {
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
         host: {
-            '[$.data-value.attr]': 'test',
-            '($.data-value.attr)': 'test',
-            '[$.tabIndex]': 'test',
-            '($.tabIndex)': 'test',
-            '[$.style.marginTop.%]': 'test',
-            '($.style.marginTop.%)': 'test',
             '[$.class.active]': 'test',
+            '[$.data-value.attr]': 'test',
+            '[$.style.marginTop.%]': 'test',
+            '[$.tabIndex]': 'test',
             '($.class.active)': 'test',
-            '(document>custom)': 'onCustom()',
+            '($.data-value.attr)': 'test',
+            '($.style.marginTop.%)': 'test',
+            '($.tabIndex)': 'test',
             '(document:click.zoneless.stop.prevent)': 'onFilteredClicks($event)',
+            '(document>custom)': 'onCustom()',
         },
     })
     class TestComponent {
