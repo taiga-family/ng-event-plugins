@@ -86,7 +86,6 @@ describe('EventManagers', () => {
     })
     class TestComponent {
         public readonly test = asCallable(new BehaviorSubject<number | null>(1));
-
         public flag = false;
         public custom = false;
         public readonly onStoppedClick = jest.fn();

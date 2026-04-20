@@ -21,7 +21,6 @@ export class StaticComponent implements AfterViewChecked {
     });
 
     protected readonly items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-
     protected popup = false;
 
     public ngAfterViewChecked(): void {
