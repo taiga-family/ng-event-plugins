@@ -5,7 +5,6 @@ import {AbstractEventPlugin} from './abstract.plugin';
 @Injectable()
 export class ZonelessPlugin extends AbstractEventPlugin {
     public static ngZone?: NgZone;
-
     public readonly modifier: string = '.zoneless';
 
     public addEventListener(

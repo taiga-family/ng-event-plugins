@@ -28,13 +28,10 @@ import {shouldCall} from '@taiga-ui/event-plugins';
 export class SelectComponent {
     private readonly input = viewChild.required<ElementRef>('input');
     private readonly options = viewChildren<ElementRef>('option');
-
     private readonly document = inject(DOCUMENT);
     protected readonly elementRef = inject(ElementRef);
     protected open = false;
-
     protected readonly state = linkedSignal(() => this.value());
-
     public readonly items = input<readonly string[]>([]);
     public readonly value = input('');
 
