@@ -87,7 +87,7 @@
         "@angular/router": "19.2.18",
         "@nx/jest": "21.6.10",
         "@nx/workspace": "21.6.10",
-        "@taiga-ui/configs": "0.484.0",
+        "@taiga-ui/configs": "0.485.0",
         "@types/estree": "1.0.8",
         "@types/express": "5.0.6",
         "@types/jest": "29.5.14",
