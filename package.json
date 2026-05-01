@@ -91,7 +91,7 @@
         "@types/estree": "1.0.8",
         "@types/express": "5.0.6",
         "@types/jest": "29.5.14",
-        "@types/node": "24.10.11",
+        "@types/node": "24.12.2",
         "core-js": "3.49.0",
         "husky": "9.1.7",
         "less": "4.6.4",
