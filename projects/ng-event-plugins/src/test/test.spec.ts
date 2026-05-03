@@ -134,6 +134,7 @@ describe('EventManagers', () => {
 
     it('clicks are stopped', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#stopped-clicks'),
         ).nativeElement;
@@ -147,6 +148,7 @@ describe('EventManagers', () => {
 
     it('clicks go through with default prevented', () => {
         const event = new Event('click', {bubbles: true, cancelable: true});
+
         const element = fixture.debugElement.query(
             By.css('#prevented-clicks'),
         ).nativeElement;
@@ -160,6 +162,7 @@ describe('EventManagers', () => {
 
     it('clicks are filtered', () => {
         const event = new Event('click');
+
         const element = fixture.debugElement.query(
             By.css('#filtered-clicks'),
         ).nativeElement;
@@ -172,6 +175,7 @@ describe('EventManagers', () => {
 
     it('clicks go through filtered', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#filtered-clicks'),
         ).nativeElement;
@@ -184,6 +188,7 @@ describe('EventManagers', () => {
 
     it('clicks are captured', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#captured-clicks'),
         ).nativeElement;
@@ -196,6 +201,7 @@ describe('EventManagers', () => {
 
     it('clicks are debounced (ms)', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-ms'),
         ).nativeElement;
@@ -215,6 +221,7 @@ describe('EventManagers', () => {
     it('multiple clicks are debounced (ms)', () => {
         const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
         const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-ms'),
         ).nativeElement;
@@ -247,6 +254,7 @@ describe('EventManagers', () => {
 
     it('clicks are not debounced after destroy (ms)', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-ms'),
         ).nativeElement;
@@ -267,6 +275,7 @@ describe('EventManagers', () => {
 
     it('clicks are debounced (s)', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-s'),
         ).nativeElement;
@@ -286,6 +295,7 @@ describe('EventManagers', () => {
     it('multiple clicks are debounced (s)', () => {
         const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
         const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-s'),
         ).nativeElement;
@@ -318,6 +328,7 @@ describe('EventManagers', () => {
 
     it('clicks are not debounced after destroy (s)', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#debounce-clicks-s'),
         ).nativeElement;
@@ -340,6 +351,7 @@ describe('EventManagers', () => {
         const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
         const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
         const thirdEvent = new CustomEvent('click', {bubbles: true, detail: {data: 3}});
+
         const element = fixture.debugElement.query(
             By.css('#throttle-clicks-ms'),
         ).nativeElement;
@@ -375,6 +387,7 @@ describe('EventManagers', () => {
         const firstEvent = new CustomEvent('click', {bubbles: true, detail: {data: 1}});
         const secondEvent = new CustomEvent('click', {bubbles: true, detail: {data: 2}});
         const thirdEvent = new CustomEvent('click', {bubbles: true, detail: {data: 3}});
+
         const element = fixture.debugElement.query(
             By.css('#throttle-clicks-s'),
         ).nativeElement;
@@ -408,6 +421,7 @@ describe('EventManagers', () => {
 
     it('self listeners not triggered on bubbled events', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(
             By.css('#bubbled-clicks'),
         ).nativeElement;
@@ -420,6 +434,7 @@ describe('EventManagers', () => {
 
     it('self listeners triggered on events originated on the same element', () => {
         const event = new Event('click', {bubbles: true});
+
         const element = fixture.debugElement.query(By.css('#bubbled-clicks'))
             .nativeElement.parentElement;
 
