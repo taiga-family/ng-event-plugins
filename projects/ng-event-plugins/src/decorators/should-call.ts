@@ -7,6 +7,7 @@ export function shouldCall<T>(predicate: (this: T, ...args: any[]) => boolean): 
         desc?: PropertyDescriptor,
     ): any => {
         const value = desc?.value || original;
+
         const result = function (this: T, ...args: any[]): void {
             if (!predicate.apply(this, args)) {
                 return;

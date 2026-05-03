@@ -44,6 +44,7 @@ export class LongtapEventPlugin extends EventManagerPlugin {
 
     private listenTouchEvents(element: HTMLElement): Function {
         let longTapTimeout: any = null;
+
         let touchStartCoords: {
             clientX: number;
             clientY: number;
