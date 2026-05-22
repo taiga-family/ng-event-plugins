@@ -21,6 +21,7 @@ export const GLOBAL_HANDLER = new InjectionToken<(name: string) => EventTarget>(
 @Injectable()
 export class GlobalEventPlugin extends AbstractEventPlugin {
     private readonly handler: Function = inject(GLOBAL_HANDLER);
+
     protected readonly modifier = '>';
 
     public addEventListener(_: HTMLElement, event: string, handler: Function): Function {
