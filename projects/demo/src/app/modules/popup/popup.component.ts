@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, output} from '@angular/core';
 
 @Component({
     standalone: true,
@@ -9,8 +9,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
     host: {'(window:keydown.esc)': 'onEsc()'},
 })
 export class PopupComponent {
-    @Output()
-    public readonly closed = new EventEmitter<void>();
+    protected readonly closed = output();
 
     protected onEsc(): void {
         this.closed.emit();

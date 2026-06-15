@@ -3,11 +3,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    EventEmitter,
     inject,
     input,
     linkedSignal,
-    Output,
+    model,
     viewChild,
     viewChildren,
 } from '@angular/core';
@@ -35,10 +34,8 @@ export class SelectComponent {
     protected readonly state = linkedSignal(() => this.value());
 
     public readonly items = input<readonly string[]>([]);
-    public readonly value = input('');
 
-    @Output()
-    public readonly valueChange = new EventEmitter<string>();
+    protected readonly value = model('');
 
     protected get focused(): boolean {
         return this.elementRef.nativeElement.contains(this.document.activeElement);
@@ -85,7 +82,7 @@ export class SelectComponent {
     protected onSelect(value: string): void {
         this.input().nativeElement.focus();
         this.state.set(value);
-        this.valueChange.emit(value);
+        this.value.set(value);
         this.open = false;
     }
 
