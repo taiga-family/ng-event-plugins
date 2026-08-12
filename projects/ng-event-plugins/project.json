@@ -26,7 +26,7 @@
                 "parallel": false,
                 "commands": [
                     "cp ./LICENSE ./README.md ./dist/{projectName}",
-                    "npm publish ./dist/{projectName} --ignore-scripts"
+                    "npm publish ./dist/{projectName} --ignore-scripts --tag v4-lts"
                 ]
             },
             "dependsOn": [
