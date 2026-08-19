@@ -92,7 +92,7 @@
         "@types/express": "5.0.6",
         "@types/jest": "29.5.14",
         "@types/node": "24.13.3",
-        "core-js": "3.49.0",
+        "core-js": "3.50.0",
         "husky": "9.1.7",
         "less": "4.8.1",
         "ng-packagr": "19.2.2",
