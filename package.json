@@ -104,8 +104,8 @@
         "typescript": "5.8.3"
     },
     "authors": [
-        "Alex Inkin <a.inkin@tinkoff.ru>",
-        "Roman Sedov <r.sedov@tinkoff.ru>"
+        "Alex Inkin <alexander@inkin.ru>",
+        "Roman Sedov <marsfarsh@gmail.com>"
     ],
     "syncer": {
         "includePaths": [
