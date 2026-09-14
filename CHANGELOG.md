@@ -1,3 +1,10 @@
+## [5.1.0](https://github.com/taiga-family/ng-event-plugins/compare/v5.0.0...v5.1.0) (2026-09-14)
+
+### 🐞 Bug Fixes
+
+- update JetBrains Web Types metadata ([#1258](https://github.com/taiga-family/ng-event-plugins/pull/1258))
+  [(aea0184)](https://github.com/taiga-family/ng-event-plugins/commit/aea0184e98dc4f580470b26e2e308ed86e5da35d)
+
 ## [5.0.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.7.0...v5.0.0) (2025-12-19)
 
 ### 🚀 Features
