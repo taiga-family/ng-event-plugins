@@ -9,7 +9,7 @@
             "ng-custom-events": [
                 {
                     "name": "Longtap event",
-                    "description": "An event triggered by a long press on a user interface element. This event can be used to implement additional actions or display a context menu that opens upon a long press.",
+                    "description": "Fires for a long press or context-menu gesture. Uses the native `contextmenu` event where available and provides an iOS-compatible fallback.",
                     "priority": "normal",
                     "pattern": {
                         "template": ["longtap"]
@@ -17,6 +17,14 @@
                     "type": {
                         "name": "LongtapEvent",
                         "module": "./src/types/longtap.event.ts"
+                    }
+                },
+                {
+                    "name": "Resize event",
+                    "description": "Fires when the element dimensions change, using `ResizeObserver` under the hood.",
+                    "priority": "normal",
+                    "pattern": {
+                        "template": ["resize"]
                     }
                 },
                 {
@@ -28,11 +36,12 @@
                                 "items": {
                                     "path": "/js/events",
                                     "includeVirtual": false
-                                }
+                                },
+                                "template": ["#item:event"]
                             },
                             {
                                 "items": "ng-event-plugins-modifiers",
-                                "template": [".", "#...", "#item:modifiers"],
+                                "template": [".", "#...", "#item:modifier"],
                                 "priority": "high",
                                 "repeat": true,
                                 "unique": true,
@@ -43,54 +52,54 @@
                     "ng-event-plugins-modifiers": [
                         {
                             "name": "capture",
-                            "description": "Subscribe to event in capture phase"
+                            "description": "Listens for the event during the capture phase instead of the bubbling phase."
                         },
                         {
                             "name": "once",
-                            "description": "Unsubscribe from event after first emit"
+                            "description": "Removes the event listener automatically after the first invocation."
                         },
                         {
                             "name": "passive",
-                            "description": "Add passive event listener (that cannot prevent default behavior)"
+                            "description": "Registers a passive event listener, allowing the browser to optimize scrolling and other input handling."
                         },
                         {
                             "name": "prevent",
-                            "description": "Call `.preventDefault()` on the event"
+                            "description": "Calls `event.preventDefault()` before invoking the event handler."
                         },
                         {
                             "name": "self",
-                            "description": "Ignore bubbled events"
+                            "description": "Invokes the handler only when the event originated from the element itself, ignoring bubbled events from descendants."
                         },
                         {
                             "name": "silent",
-                            "description": "Run event handler outside NgZone to not trigger change detection"
+                            "description": "Legacy alias for `zoneless`. Runs the event handler outside Angular's `NgZone` to avoid triggering change detection."
                         },
                         {
                             "name": "zoneless",
-                            "description": "Run event handler outside NgZone to not trigger change detection"
+                            "description": "Runs the event handler outside Angular's `NgZone` to avoid triggering change detection."
                         },
                         {
                             "name": "stop",
-                            "description": "Call `.stopPropagation()` on the event"
+                            "description": "Calls `event.stopPropagation()` before invoking the event handler."
                         },
                         {
                             "name": "debounce~<delay>ms",
-                            "description": "Triggers the handler after no events have occurred for every <delay> milliseconds.",
+                            "description": "Invokes the handler after events stop arriving for the specified delay in milliseconds. Example: `click.debounce~300ms`.",
                             "pattern": "debounce~\\d+ms"
                         },
                         {
                             "name": "debounce~<delay>s",
-                            "description": "Triggers the handler after no events have occurred for every <delay> seconds.",
+                            "description": "Invokes the handler after events stop arriving for the specified delay in seconds. Example: `click.debounce~2s`.",
                             "pattern": "debounce~\\d+s"
                         },
                         {
                             "name": "throttle~<delay>ms",
-                            "description": "Triggers the handler at most once every <delay> milliseconds.",
+                            "description": "Invokes the handler at most once per specified interval in milliseconds. Example: `click.throttle~300ms`.",
                             "pattern": "throttle~\\d+ms"
                         },
                         {
                             "name": "throttle~<delay>s",
-                            "description": "Triggers the handler at most once every <delay> seconds.",
+                            "description": "Invokes the handler at most once per specified interval in seconds. Example: `click.throttle~2s`.",
                             "pattern": "throttle~\\d+s"
                         }
                     ]
