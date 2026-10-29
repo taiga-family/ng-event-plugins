@@ -1,3 +1,21 @@
+### [5.1.0](https://github.com/taiga-family/ng-event-plugins/compare/v5.0.0...v5.1.0) (2026-09-14)
+
+### 🐞 Bug Fixes
+
+- update JetBrains Web Types metadata (#1258)
+  [(aea0184)](https://github.com/taiga-family/ng-event-plugins/commit/aea0184e98dc4f580470b26e2e308ed86e5da35d)
+
+## [5.0.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.8.0...v5.0.0) (2025-12-19)
+
+### 🚀 Features
+
+- **global**: allow nested targets by dot path
+  [(4026ab7)](https://github.com/taiga-family/ng-event-plugins/commit/4026ab741b447c339793d1e2b560bee26ff72532)
+- upgrade to Angular 19 (#1005)
+  [(240ae9e)](https://github.com/taiga-family/ng-event-plugins/commit/240ae9e385ce241b2a02bd149f2f5940821777a8)
+
+### [4.8.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.7.0...v4.8.0) (2026-10-29)
+
 ### [4.7.0](https://github.com/taiga-family/ng-event-plugins/compare/v4.6.0...v4.7.0) (2025-09-02)
 
 ### 🚀 Features
