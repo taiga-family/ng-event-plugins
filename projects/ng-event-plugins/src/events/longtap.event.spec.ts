@@ -208,11 +208,15 @@ describe('LongtapEventPlugin', () => {
             });
 
             describe('when touchend event fired', () => {
+                let event: TouchEvent;
+
                 beforeEach(() => {
-                    const event = new TouchEvent('touchend', {cancelable: true});
+                    event = new TouchEvent('touchend', {cancelable: true});
 
                     div1Element.nativeElement.dispatchEvent(event);
+                });
 
+                it('should allow the default action', () => {
                     expect(event.defaultPrevented).toBe(false);
                 });
 
