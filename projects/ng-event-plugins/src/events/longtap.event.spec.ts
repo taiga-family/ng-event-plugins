@@ -92,6 +92,14 @@ describe('LongtapEventPlugin', () => {
                         }),
                     );
                 });
+
+                it('should prevent the browser from generating a click on touchend', () => {
+                    const event = new TouchEvent('touchend', {cancelable: true});
+
+                    div1Element.nativeElement.dispatchEvent(event);
+
+                    expect(event.defaultPrevented).toBe(true);
+                });
             });
 
             describe('when touchmove event fired (with distance less than 15)', () => {
@@ -200,10 +208,16 @@ describe('LongtapEventPlugin', () => {
             });
 
             describe('when touchend event fired', () => {
+                let event: TouchEvent;
+
                 beforeEach(() => {
-                    div1Element.nativeElement.dispatchEvent(
-                        new TouchEvent('touchcancel', {touches: []}),
-                    );
+                    event = new TouchEvent('touchend', {cancelable: true});
+
+                    div1Element.nativeElement.dispatchEvent(event);
+                });
+
+                it('should allow the default action', () => {
+                    expect(event.defaultPrevented).toBe(false);
                 });
 
                 it('should not fire longtap event', () => {
