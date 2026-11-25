@@ -44,6 +44,7 @@ export class LongtapEventPlugin extends EventManagerPlugin {
 
     private listenTouchEvents(element: HTMLElement): Function {
         let longTapTimeout: any = null;
+        let didLongtap = false;
 
         let touchStartCoords: {
             clientX: number;
@@ -52,6 +53,7 @@ export class LongtapEventPlugin extends EventManagerPlugin {
 
         const reset = (): void => {
             clearTimeout(longTapTimeout);
+            didLongtap = false;
             touchStartCoords = null;
             longTapTimeout = null;
         };
@@ -71,8 +73,9 @@ export class LongtapEventPlugin extends EventManagerPlugin {
                 touchStartCoords = {clientX, clientY};
 
                 longTapTimeout = setTimeout(() => {
-                    this.dispatchLongtapEvent(element, clientX, clientY);
                     reset();
+                    didLongtap = true;
+                    this.dispatchLongtapEvent(element, clientX, clientY);
                 }, TAP_DELAY);
             },
         );
@@ -110,11 +113,18 @@ export class LongtapEventPlugin extends EventManagerPlugin {
 
         const removeTouchendListener = this.manager.addEventListener(
             element,
-            'touchend.zoneless.passive',
-            reset,
+            'touchend.zoneless',
+            (event: TouchEvent) => {
+                if (didLongtap) {
+                    event.preventDefault();
+                }
+
+                reset();
+            },
         );
 
         return () => {
+            reset();
             removeTouchstartListener();
             removeTouchmoveListener();
             removeTouchcancelListener();
