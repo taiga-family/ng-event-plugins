@@ -1,3 +1,10 @@
+## [5.2.0](https://github.com/taiga-family/ng-event-plugins/compare/v5.1.0...v5.2.0) (2026-11-25)
+
+### 🐞 Bug Fixes
+
+- **longtap**: prevent click on iOS ([#1295](https://github.com/taiga-family/ng-event-plugins/pull/1295))
+  [(c85b5ba)](https://github.com/taiga-family/ng-event-plugins/commit/c85b5ba290405778174754ac7ecf6e8f179cc22f)
+
 ## [5.1.0](https://github.com/taiga-family/ng-event-plugins/compare/v5.0.0...v5.1.0) (2026-09-14)
 
 ### 🐞 Bug Fixes
